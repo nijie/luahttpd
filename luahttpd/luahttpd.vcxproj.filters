@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="http">
+      <UniqueIdentifier>{67a14dee-bcdb-45cd-b2f2-77cad762e8fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="net">
+      <UniqueIdentifier>{78b02549-f5e4-4901-9b18-ddef5cbc7f77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="script">
+      <UniqueIdentifier>{8f561d82-df86-4c99-9aeb-46319eb58c5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="script\lua">
+      <UniqueIdentifier>{24223175-e93b-4b5a-80f4-e8a8bbd67497}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="script\tolua">
+      <UniqueIdentifier>{8242ea46-fe8d-43c0-a4be-06e3d222174e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="session">
+      <UniqueIdentifier>{a7539c31-f130-477f-91c4-b23747f922a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ask">
+      <UniqueIdentifier>{317e4d1b-42dc-4018-9135-9a9279ea50d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="framework">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="script\luaexport.pkg">
+      <Filter>script</Filter>
+    </None>
+    <None Include="script\make.bat">
+      <Filter>script</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="framework\CrashHelper.cpp">
+      <Filter>framework</Filter>
+    </ClCompile>
+    <ClCompile Include="framework\luahttpd.cpp">
+      <Filter>framework</Filter>
+    </ClCompile>
+    <ClCompile Include="framework\serverwork.cpp">
+      <Filter>framework</Filter>
+    </ClCompile>
+    <ClCompile Include="framework\stdafx.cpp">
+      <Filter>framework</Filter>
+    </ClCompile>
+    <ClCompile Include="framework\exelogger.cpp">
+      <Filter>framework</Filter>
+    </ClCompile>
+    <ClCompile Include="framework\config.cpp">
+      <Filter>framework</Filter>
+    </ClCompile>
+    <ClCompile Include="framework\markupstl.cpp">
+      <Filter>framework</Filter>
+    </ClCompile>
+    <ClCompile Include="net\clientmgr.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="net\client.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="net\server.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="net\servermgr.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="http\httpparser.cpp">
+      <Filter>http</Filter>
+    </ClCompile>
+    <ClCompile Include="http\httpresponse.cpp">
+      <Filter>http</Filter>
+    </ClCompile>
+    <ClCompile Include="script\luaexport.cpp">
+      <Filter>script</Filter>
+    </ClCompile>
+    <ClCompile Include="script\luascript.cpp">
+      <Filter>script</Filter>
+    </ClCompile>
+    <ClCompile Include="http\httphandler.cpp">
+      <Filter>http</Filter>
+    </ClCompile>
+    <ClCompile Include="http\coder.cpp">
+      <Filter>http</Filter>
+    </ClCompile>
+    <ClCompile Include="script\apiexport.cpp">
+      <Filter>script</Filter>
+    </ClCompile>
+    <ClCompile Include="session\session.cpp">
+      <Filter>session</Filter>
+    </ClCompile>
+    <ClCompile Include="session\sessionmgr.cpp">
+      <Filter>session</Filter>
+    </ClCompile>
+    <ClCompile Include="ask\serverask.cpp">
+      <Filter>ask</Filter>
+    </ClCompile>
+    <ClCompile Include="ask\dbask.cpp">
+      <Filter>ask</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\lua\lapi.c">
+      <Filter>script\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\lua\lauxlib.c">
+      <Filter>script\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\lua\lbaselib.c">
+      <Filter>script\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\lua\lbitlib.c">
+      <Filter>script\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\lua\lcode.c">
+      <Filter>script\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\lua\lcorolib.c">
+      <Filter>script\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\lua\lctype.c">
+      <Filter>script\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\lua\ldblib.c">
+      <Filter>script\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\lua\ldebug.c">
+      <Filter>script\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\lua\ldo.c">
+      <Filter>script\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\lua\ldump.c">
+      <Filter>script\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\lua\lfunc.c">
+      <Filter>script\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\lua\lgc.c">
+      <Filter>script\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\lua\linit.c">
+      <Filter>script\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\lua\liolib.c">
+      <Filter>script\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\lua\llex.c">
+      <Filter>script\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\lua\lmathlib.c">
+      <Filter>script\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\lua\lmem.c">
+      <Filter>script\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\lua\loadlib.c">
+      <Filter>script\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\lua\lobject.c">
+      <Filter>script\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\lua\lopcodes.c">
+      <Filter>script\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\lua\loslib.c">
+      <Filter>script\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\lua\lparser.c">
+      <Filter>script\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\lua\lstate.c">
+      <Filter>script\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\lua\lstring.c">
+      <Filter>script\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\lua\lstrlib.c">
+      <Filter>script\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\lua\ltable.c">
+      <Filter>script\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\lua\ltablib.c">
+      <Filter>script\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\lua\ltm.c">
+      <Filter>script\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\lua\lundump.c">
+      <Filter>script\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\lua\lvm.c">
+      <Filter>script\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\lua\lzio.c">
+      <Filter>script\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\tolua\lib\luaex.c">
+      <Filter>script\tolua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\tolua\lib\tolua_event.c">
+      <Filter>script\tolua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\tolua\lib\tolua_is.c">
+      <Filter>script\tolua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\tolua\lib\tolua_map.c">
+      <Filter>script\tolua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\tolua\lib\tolua_push.c">
+      <Filter>script\tolua</Filter>
+    </ClCompile>
+    <ClCompile Include="lib3rd\lua\tolua\lib\tolua_to.c">
+      <Filter>script\tolua</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework\CrashHelper.h">
+      <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="framework\serverwork.h">
+      <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="framework\stdafx.h">
+      <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="framework\targetver.h">
+      <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="framework\exelogger.h">
+      <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="framework\config.h">
+      <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="framework\markupstl.h">
+      <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="net\clientmgr.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="net\client.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="net\server.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="net\servermgr.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="http\match.h">
+      <Filter>http</Filter>
+    </ClInclude>
+    <ClInclude Include="http\httpparser.h">
+      <Filter>http</Filter>
+    </ClInclude>
+    <ClInclude Include="http\httpresponse.h">
+      <Filter>http</Filter>
+    </ClInclude>
+    <ClInclude Include="script\luascript.h">
+      <Filter>script</Filter>
+    </ClInclude>
+    <ClInclude Include="http\httphandler.h">
+      <Filter>http</Filter>
+    </ClInclude>
+    <ClInclude Include="framework\utility.h">
+      <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="http\coder.h">
+      <Filter>http</Filter>
+    </ClInclude>
+    <ClInclude Include="session\keymaker.h">
+      <Filter>session</Filter>
+    </ClInclude>
+    <ClInclude Include="session\session.h">
+      <Filter>session</Filter>
+    </ClInclude>
+    <ClInclude Include="session\sessionmgr.h">
+      <Filter>session</Filter>
+    </ClInclude>
+    <ClInclude Include="ask\luaask.h">
+      <Filter>ask</Filter>
+    </ClInclude>
+    <ClInclude Include="ask\serverask.h">
+      <Filter>ask</Filter>
+    </ClInclude>
+    <ClInclude Include="ask\dbask.h">
+      <Filter>ask</Filter>
+    </ClInclude>
+    <ClInclude Include="lib3rd\lua\lua\lapi.h">
+      <Filter>script\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lib3rd\lua\lua\lcode.h">
+      <Filter>script\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lib3rd\lua\lua\lctype.h">
+      <Filter>script\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lib3rd\lua\lua\ldebug.h">
+      <Filter>script\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lib3rd\lua\lua\ldo.h">
+      <Filter>script\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lib3rd\lua\lua\lfunc.h">
+      <Filter>script\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lib3rd\lua\lua\lgc.h">
+      <Filter>script\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lib3rd\lua\lua\llex.h">
+      <Filter>script\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lib3rd\lua\lua\llimits.h">
+      <Filter>script\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lib3rd\lua\lua\lmem.h">
+      <Filter>script\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lib3rd\lua\lua\lobject.h">
+      <Filter>script\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lib3rd\lua\lua\lopcodes.h">
+      <Filter>script\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lib3rd\lua\lua\lparser.h">
+      <Filter>script\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lib3rd\lua\lua\lstate.h">
+      <Filter>script\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lib3rd\lua\lua\lstring.h">
+      <Filter>script\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lib3rd\lua\lua\ltable.h">
+      <Filter>script\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lib3rd\lua\lua\ltm.h">
+      <Filter>script\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lib3rd\lua\lua\lualib.h">
+      <Filter>script\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lib3rd\lua\lua\lundump.h">
+      <Filter>script\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lib3rd\lua\lua\lvm.h">
+      <Filter>script\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lib3rd\lua\lua\lzio.h">
+      <Filter>script\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lib3rd\lua\tolua\lib\tolua_event.h">
+      <Filter>script\tolua</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

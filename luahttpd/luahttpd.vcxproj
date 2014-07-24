@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{63B3D74C-2734-4F4C-A060-B8335F090851}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>luahttpd</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>../bin/</OutDir>
+    <TargetName>luahttpd</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalIncludeDirectories>framework;../include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>../lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>fxnet4qqSMTD.lib;fxloggerSMTD.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <Profile>true</Profile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalIncludeDirectories>framework;lib3rd\google;lib3rd\fxlib\include;lib3rd\json;lib3rd\leveldb\include;lib3rd\lua\include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>lib3rd/fxlib/lib;lib3rd/json;lib3rd/leveldb/lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>fxnetSMTD64.lib;fxdbSMTD64.lib;fxloggerSMTD64.lib;json_libmtd.lib;leveldbd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <Profile>true</Profile>
+      <OutputFile>../bin/luahttpd.exe</OutputFile>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+    </Link>
+    <PreBuildEvent>
+      <Command>cd script/
+make.bat</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>framework;../../../include;../../../lib3rd/lua/include</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>../lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>fxnet4qqSMT.lib;fxloggerSMT.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="script\luaexport.pkg" />
+    <None Include="script\make.bat" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ask\dbask.cpp" />
+    <ClCompile Include="ask\serverask.cpp" />
+    <ClCompile Include="framework\config.cpp" />
+    <ClCompile Include="framework\CrashHelper.cpp" />
+    <ClCompile Include="framework\exelogger.cpp" />
+    <ClCompile Include="framework\luahttpd.cpp" />
+    <ClCompile Include="framework\markupstl.cpp" />
+    <ClCompile Include="framework\serverwork.cpp" />
+    <ClCompile Include="framework\stdafx.cpp" />
+    <ClCompile Include="lib3rd\lua\lua\lapi.c" />
+    <ClCompile Include="lib3rd\lua\lua\lauxlib.c" />
+    <ClCompile Include="lib3rd\lua\lua\lbaselib.c" />
+    <ClCompile Include="lib3rd\lua\lua\lbitlib.c" />
+    <ClCompile Include="lib3rd\lua\lua\lcode.c" />
+    <ClCompile Include="lib3rd\lua\lua\lcorolib.c" />
+    <ClCompile Include="lib3rd\lua\lua\lctype.c" />
+    <ClCompile Include="lib3rd\lua\lua\ldblib.c" />
+    <ClCompile Include="lib3rd\lua\lua\ldebug.c" />
+    <ClCompile Include="lib3rd\lua\lua\ldo.c" />
+    <ClCompile Include="lib3rd\lua\lua\ldump.c" />
+    <ClCompile Include="lib3rd\lua\lua\lfunc.c" />
+    <ClCompile Include="lib3rd\lua\lua\lgc.c" />
+    <ClCompile Include="lib3rd\lua\lua\linit.c" />
+    <ClCompile Include="lib3rd\lua\lua\liolib.c" />
+    <ClCompile Include="lib3rd\lua\lua\llex.c" />
+    <ClCompile Include="lib3rd\lua\lua\lmathlib.c" />
+    <ClCompile Include="lib3rd\lua\lua\lmem.c" />
+    <ClCompile Include="lib3rd\lua\lua\loadlib.c" />
+    <ClCompile Include="lib3rd\lua\lua\lobject.c" />
+    <ClCompile Include="lib3rd\lua\lua\lopcodes.c" />
+    <ClCompile Include="lib3rd\lua\lua\loslib.c" />
+    <ClCompile Include="lib3rd\lua\lua\lparser.c" />
+    <ClCompile Include="lib3rd\lua\lua\lstate.c" />
+    <ClCompile Include="lib3rd\lua\lua\lstring.c" />
+    <ClCompile Include="lib3rd\lua\lua\lstrlib.c" />
+    <ClCompile Include="lib3rd\lua\lua\ltable.c" />
+    <ClCompile Include="lib3rd\lua\lua\ltablib.c" />
+    <ClCompile Include="lib3rd\lua\lua\ltm.c" />
+    <ClCompile Include="lib3rd\lua\lua\lundump.c" />
+    <ClCompile Include="lib3rd\lua\lua\lvm.c" />
+    <ClCompile Include="lib3rd\lua\lua\lzio.c" />
+    <ClCompile Include="lib3rd\lua\tolua\lib\luaex.c" />
+    <ClCompile Include="lib3rd\lua\tolua\lib\tolua_event.c" />
+    <ClCompile Include="lib3rd\lua\tolua\lib\tolua_is.c" />
+    <ClCompile Include="lib3rd\lua\tolua\lib\tolua_map.c" />
+    <ClCompile Include="lib3rd\lua\tolua\lib\tolua_push.c" />
+    <ClCompile Include="lib3rd\lua\tolua\lib\tolua_to.c" />
+    <ClCompile Include="net\clientmgr.cpp" />
+    <ClCompile Include="net\client.cpp" />
+    <ClCompile Include="net\server.cpp" />
+    <ClCompile Include="net\servermgr.cpp" />
+    <ClCompile Include="http\coder.cpp" />
+    <ClCompile Include="http\httphandler.cpp" />
+    <ClCompile Include="http\httpparser.cpp" />
+    <ClCompile Include="http\httpresponse.cpp" />
+    <ClCompile Include="script\apiexport.cpp" />
+    <ClCompile Include="script\luaexport.cpp" />
+    <ClCompile Include="script\luascript.cpp" />
+    <ClCompile Include="session\session.cpp" />
+    <ClCompile Include="session\sessionmgr.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ask\dbask.h" />
+    <ClInclude Include="ask\luaask.h" />
+    <ClInclude Include="ask\serverask.h" />
+    <ClInclude Include="framework\config.h" />
+    <ClInclude Include="framework\CrashHelper.h" />
+    <ClInclude Include="framework\exelogger.h" />
+    <ClInclude Include="framework\markupstl.h" />
+    <ClInclude Include="framework\serverwork.h" />
+    <ClInclude Include="framework\stdafx.h" />
+    <ClInclude Include="framework\targetver.h" />
+    <ClInclude Include="framework\utility.h" />
+    <ClInclude Include="lib3rd\lua\lua\lapi.h" />
+    <ClInclude Include="lib3rd\lua\lua\lcode.h" />
+    <ClInclude Include="lib3rd\lua\lua\lctype.h" />
+    <ClInclude Include="lib3rd\lua\lua\ldebug.h" />
+    <ClInclude Include="lib3rd\lua\lua\ldo.h" />
+    <ClInclude Include="lib3rd\lua\lua\lfunc.h" />
+    <ClInclude Include="lib3rd\lua\lua\lgc.h" />
+    <ClInclude Include="lib3rd\lua\lua\llex.h" />
+    <ClInclude Include="lib3rd\lua\lua\llimits.h" />
+    <ClInclude Include="lib3rd\lua\lua\lmem.h" />
+    <ClInclude Include="lib3rd\lua\lua\lobject.h" />
+    <ClInclude Include="lib3rd\lua\lua\lopcodes.h" />
+    <ClInclude Include="lib3rd\lua\lua\lparser.h" />
+    <ClInclude Include="lib3rd\lua\lua\lstate.h" />
+    <ClInclude Include="lib3rd\lua\lua\lstring.h" />
+    <ClInclude Include="lib3rd\lua\lua\ltable.h" />
+    <ClInclude Include="lib3rd\lua\lua\ltm.h" />
+    <ClInclude Include="lib3rd\lua\lua\lualib.h" />
+    <ClInclude Include="lib3rd\lua\lua\lundump.h" />
+    <ClInclude Include="lib3rd\lua\lua\lvm.h" />
+    <ClInclude Include="lib3rd\lua\lua\lzio.h" />
+    <ClInclude Include="lib3rd\lua\tolua\lib\tolua_event.h" />
+    <ClInclude Include="net\clientmgr.h" />
+    <ClInclude Include="net\client.h" />
+    <ClInclude Include="net\server.h" />
+    <ClInclude Include="net\servermgr.h" />
+    <ClInclude Include="http\coder.h" />
+    <ClInclude Include="http\httphandler.h" />
+    <ClInclude Include="http\httpparser.h" />
+    <ClInclude Include="http\httpresponse.h" />
+    <ClInclude Include="http\match.h" />
+    <ClInclude Include="script\luascript.h" />
+    <ClInclude Include="session\keymaker.h" />
+    <ClInclude Include="session\session.h" />
+    <ClInclude Include="session\sessionmgr.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
