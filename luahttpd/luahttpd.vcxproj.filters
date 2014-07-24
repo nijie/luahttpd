@@ -361,5 +361,8 @@
     <ClInclude Include="lib3rd\lua\tolua\lib\tolua_event.h">
       <Filter>script\tolua</Filter>
     </ClInclude>
+    <ClInclude Include="framework\version.h">
+      <Filter>framework</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

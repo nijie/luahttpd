@@ -13,6 +13,7 @@
 #include "../script/luascript.h"
 #include "utility.h"
 #include "../session/sessionmgr.h"
+#include "version.h"
 
 #define UPDATE_SESSION_TIME (5 * 60) // 5∑÷÷”
 
@@ -87,13 +88,15 @@ void ServerWork::uninit()
 
 void ServerWork::run()
 {
-	SYS_CRITICAL("--------------- Server Starting ---------------");
+	SYS_CRITICAL("--------------- Server [%s] Starting ---------------", LUAHTTPD_VERSION);
+	printf("--------------- Server [v%s] Starting ---------------\r\n", LUAHTTPD_VERSION);
 	if (!__start())
 	{
 		return;
 	}
 
 	SYS_CRITICAL("--------------- Server Start ! ---------------");
+	printf("--------------- Server Start ! ---------------\r\n");
 
 	unsigned int now = GetCurTime();
 	unsigned int last = now;

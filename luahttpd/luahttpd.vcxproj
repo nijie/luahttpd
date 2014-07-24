@@ -236,6 +236,7 @@ make.bat</Command>
     <ClInclude Include="framework\stdafx.h" />
     <ClInclude Include="framework\targetver.h" />
     <ClInclude Include="framework\utility.h" />
+    <ClInclude Include="framework\version.h" />
     <ClInclude Include="lib3rd\lua\lua\lapi.h" />
     <ClInclude Include="lib3rd\lua\lua\lcode.h" />
     <ClInclude Include="lib3rd\lua\lua\lctype.h" />
