@@ -1,0 +1,19 @@
+authors & contributors
+(ordered by the join in time)
+
+Core Developers:
+    Nijie (Jon) nijie01@qq.com
+
+Developers:
+	Nijie (Jon) nijie01@qq.com
+	
+Used Below OpenSource Project:
+	sparsehash [google]
+	leveldb [google]
+	json
+	lua
+	tolua++
+	mysql
+	SQLite3
+	fxlib (Have not yet for open source, Copyright belongs to Nijie)
+	
