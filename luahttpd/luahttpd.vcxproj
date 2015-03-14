@@ -64,6 +64,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>../bin/</OutDir>
+    <TargetName>luahttpd</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -84,14 +86,15 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>framework;../include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>framework;lib3rd\google;lib3rd\fxlib\include;lib3rd\json;lib3rd\leveldb\include;lib3rd\lua\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>../lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>fxnet4qqSMTD.lib;fxloggerSMTD.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>lib3rd/fxlib/lib;lib3rd/json;lib3rd/leveldb/lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>fxnetSMTD32.lib;fxdbSMTD32.lib;fxloggerSMTD32.lib;json_libmtd32.lib;leveldbd32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <Profile>true</Profile>
+      <OutputFile>../bin/luahttpd.exe</OutputFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
