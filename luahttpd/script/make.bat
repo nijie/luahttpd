@@ -1,3 +1,3 @@
 @echo off
-rem tolua -n luaexport -o ./luaexport.cpp ./luaexport.pkg
+rem tolua32 -n luaexport -o ./luaexport.cpp ./luaexport.pkg
 cd ..

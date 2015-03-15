@@ -189,7 +189,7 @@ const char* HttpHandler::get(int type)
 	return strValue.c_str();
 }
 
-const char* HttpHandler::gets(const char* key)
+const char* HttpHandler::get(const char* key)
 {
 	hash_map<string, string>::iterator it = m_mapRequest.find(string(key));
 
@@ -232,6 +232,11 @@ void HttpHandler::getResponse(string& str)
 
 void HttpHandler::doing()
 {
+	if (m_strCmd == "favicon.ico")
+	{
+		return;
+	}
+	
 	LuaScript::Instance().callFunc(*this);
 }
 

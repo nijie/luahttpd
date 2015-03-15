@@ -72,7 +72,7 @@ static int luaB_my_print (lua_State *L) {
 		luai_my_print(L, s, l);
 		lua_pop(L, 1);  /* pop result */
 	}
-	luai_my_print(L, "\n", 1);
+	//luai_my_print(L, "\n", 1);
 	return 0;
 }
 

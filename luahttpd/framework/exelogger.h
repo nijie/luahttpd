@@ -47,5 +47,7 @@ private:
 #define USR_CRITICAL(pFmt, ...)    ExeLogger::Log(EXE_LOG_USR_CRT, __FUNCTION__, __LINE__, pFmt, ##__VA_ARGS__)  // 玩家名\t错误信息
 #define SYS_CRITICAL(pFmt, ...)    ExeLogger::Log(EXE_LOG_SYS_CRT, __FUNCTION__, __LINE__, pFmt, ##__VA_ARGS__)  // 系统信息
 
+void flog(const char* txt);
+
 #endif //__EXELOGGER_H_NIJIE_2012_0907__
 

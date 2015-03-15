@@ -1,7 +1,8 @@
-$#include "../parse/httphandler.h"
-$#include "../parse/coder.h"
+$#include "../http/httphandler.h"
+$#include "../http/coder.h"
 $#include "../session/session.h"
 $#include "../ask/dbask.h"
+$#include "exelogger.h"
 
 enum EHttpRequestType
 {
@@ -48,7 +49,7 @@ class HttpHandler
 {
 public:
 	const char*		get(int type);
-	const char*		gets(const char* key);
+	const char*		get(const char* key);
 
 	void			setValue(const char* pKey, const char* pVal);
 	const char*		getValue(const char* pKey);
@@ -88,8 +89,11 @@ public:
 	bool				next();
 	const char*			get(unsigned int dwIndex);
 	int					getSize(unsigned int dwIndex);
+	unsigned int		getInsertId();
 };
 
+void flog(const char* txt);
+int atoi(const char* a);
 
 // coder
 const char* Base64Encode(const char* pSrc);	// src -> base64

@@ -96,6 +96,10 @@
       <Profile>true</Profile>
       <OutputFile>../bin/luahttpd.exe</OutputFile>
     </Link>
+    <PreBuildEvent>
+      <Command>cd script/
+make.bat</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>

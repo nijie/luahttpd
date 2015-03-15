@@ -25,6 +25,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		if (!ServerWork::Instance().init())
 		{
 			SYS_CRITICAL("ServerWork Init Failed!");
+			printf("ServerWork Init Failed!");
 			return 1;
 		}
 

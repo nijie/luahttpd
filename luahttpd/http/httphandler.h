@@ -25,7 +25,7 @@ public:
 
 	// export start
 	const char*		get(int type);
-	const char*		gets(const char* key);
+	const char*		get(const char* key);
 
 	void			setValue(const char* pKey, const char* pVal);
 	const char*		getValue(const char* pKey);

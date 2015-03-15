@@ -132,7 +132,7 @@ const char* Session::get(const char* pKey)
 	if (m_value.isMember(pKey))
 	{
 		static char szbuff[MAX_SESSION_VALUE_LEN] = {0};
-		string& str = m_value[pKey].toStyledString();
+		string& str = m_value[pKey].asString();
 		int nSize = (int)str.size();
 		memcpy(szbuff, str.c_str(), nSize);
 		szbuff[nSize] = 0;

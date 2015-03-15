@@ -19,6 +19,7 @@ DBAsk::DBAsk()
 	m_bNeedResult = false;
 	m_nResult = 0;
 	m_pResult = NULL;
+	m_insertId = 0;
 }
 
 DBAsk::~DBAsk()
@@ -72,6 +73,10 @@ void DBAsk::OnQuery(IDBConnection *poDBConnection)
 	if (0 > m_nResult)
 	{
 		SYS_CRITICAL("Select Error [%s]", poDBConnection->GetLastErrorString());
+	}
+	else
+	{
+		m_insertId = (UINT32)poDBConnection->GetInsertId();
 	}
 }
 
@@ -181,4 +186,9 @@ int DBAsk::getSize(unsigned int dwIndex)
 	}
 
 	return m_pResult->GetFieldLength(dwIndex);
+}
+
+unsigned int DBAsk::getInsertId()
+{
+	return m_insertId;
 }

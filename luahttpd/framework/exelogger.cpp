@@ -29,6 +29,11 @@ const char* pPrefixes[] =
     "SYS_CRT",
 };
 
+void flog(const char* txt)
+{
+	USR_CRITICAL(txt);
+}
+
 bool ExeLogger::Init( const char* pszName, int nLvl, bool bOutputDbgString )
 {
     if (m_bInit)

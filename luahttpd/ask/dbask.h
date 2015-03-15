@@ -40,6 +40,7 @@ public:
 	bool				next();
 	const char*			get(unsigned int dwIndex);
 	int					getSize(unsigned int dwIndex);
+	unsigned int		getInsertId();
 	// lua export end
 
 private:
@@ -50,6 +51,7 @@ private:
 	INT32				m_nResult;
 	IDataReader*		m_pResult;
 	string				m_strSQL;
+	UINT32				m_insertId;
 };
 
 #endif	// __DBASK_H_NIJIE_2014_0613__
