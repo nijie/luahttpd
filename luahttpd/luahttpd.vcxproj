@@ -92,7 +92,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>lib3rd/fxlib/lib;lib3rd/json;lib3rd/leveldb/lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>fxnetSMTD32.lib;fxdbSMTD32.lib;fxloggerSMTD32.lib;json_libmtd32.lib;leveldbd32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>fxnetSMTD32.lib;fxdbSMTD32.lib;fxloggerSMTD32.lib;json_libmtd32.lib;leveldbd32.lib;fxhttpSMTD32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <Profile>true</Profile>
       <OutputFile>../bin/luahttpd.exe</OutputFile>
     </Link>
@@ -171,6 +171,7 @@ make.bat</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ask\dbask.cpp" />
+    <ClCompile Include="ask\httpask.cpp" />
     <ClCompile Include="ask\serverask.cpp" />
     <ClCompile Include="framework\config.cpp" />
     <ClCompile Include="framework\CrashHelper.cpp" />
@@ -233,6 +234,7 @@ make.bat</Command>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ask\dbask.h" />
+    <ClInclude Include="ask\httpask.h" />
     <ClInclude Include="ask\luaask.h" />
     <ClInclude Include="ask\serverask.h" />
     <ClInclude Include="framework\config.h" />

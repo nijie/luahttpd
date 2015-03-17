@@ -26,7 +26,7 @@
 #endif
 
 #include "version.h"
-#include "fxmeta.h"
+#include "fxtype.h"
 
 class FxConnection;
 

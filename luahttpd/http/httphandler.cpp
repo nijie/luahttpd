@@ -10,6 +10,7 @@
 #include "../ask/dbask.h"
 #include "serverwork.h"
 #include "../net/client.h"
+#include "../ask/httpask.h"
 
 #include <hash_map>
 
@@ -18,7 +19,7 @@ using namespace stdext;
 HttpHandler::HttpHandler()
 {
 	m_pSession = NULL;
-	m_nCallBackId = 0;
+	m_nCallBackCount = 0;
 }
 
 HttpHandler::~HttpHandler()
@@ -33,7 +34,7 @@ void HttpHandler::reset()
 	m_mapRequest.clear();
 	m_mapCookie.clear();
 	m_mapValue.clear();
-	m_nCallBackId = 0;
+	m_nCallBackCount = 0;
 	m_pSession = NULL;
 }
 
@@ -351,14 +352,14 @@ const char* HttpHandler::getValue(const char* pKey)
 
 bool HttpHandler::addAsk(LuaAsk* ask, int nCallbackId /*= 0*/)
 {
-	if (nCallbackId != 0 && m_nCallBackId != 0)
-	{// 已经有回调事件在处理，这次的事件将添加不成功
-		return false;
-	}
-
 	if (NULL == ask)
 	{
 		return false;
+	}
+
+	if (0 != nCallbackId)
+	{
+		ask->setCallBack(nCallbackId);
 	}
 
 	ask->setHandler(this);
@@ -368,13 +369,17 @@ bool HttpHandler::addAsk(LuaAsk* ask, int nCallbackId /*= 0*/)
 	case LUA_ASK_MYSQL:
 		{
 			DBAsk* pDBAsk = (DBAsk*)ask;
-
-			if (0 != nCallbackId)
-			{
-				pDBAsk->setNeedResult(true);
-			}
-
 			if (!ServerWork::Instance().addDBQuery(pDBAsk))
+			{
+				return false;
+			}
+		}
+		break;
+
+	case LUA_ASK_HTTP:
+		{
+			HttpAsk* pHttpAsk = (HttpAsk*)ask;
+			if (!ServerWork::Instance().addHttpRequest(pHttpAsk))
 			{
 				return false;
 			}
@@ -388,13 +393,12 @@ bool HttpHandler::addAsk(LuaAsk* ask, int nCallbackId /*= 0*/)
 		return false;
 	}
 
-	m_nCallBackId = nCallbackId;
+	if (nCallbackId != 0)
+	{
+		incCallbackCount();
+	}
+	
 	return true;
-}
-
-int HttpHandler::getCallbackId()
-{
-	return m_nCallBackId;
 }
 
 void HttpHandler::response()
@@ -404,7 +408,7 @@ void HttpHandler::response()
 		m_pSession->save();
 	}
 
-	if (m_nCallBackId != 0)
+	if (m_nCallBackCount > 0)
 	{// 说明还有其他的回调需要处理
 		return;
 	}
@@ -418,12 +422,55 @@ void HttpHandler::response()
 	string str;
 	getResponse(str);
 
-	m_pClient->Send(str.c_str(), str.size());
+	const char* ptr = str.c_str();
+	int count = (int)str.size();
+
+	for (int i = 0; i < count; i += 1024)
+	{
+		int len = count - i;
+		if (len > 1024)
+		{
+			len = 1024;
+		}
+		
+		while (true)
+		{
+			bool bRet = m_pClient->Send(ptr + i, len);
+			if (bRet)
+			{
+				break;
+			}
+			else
+			{
+				Sleep(1);
+			}
+		}
+	}
+
+	if (count > 8096)
+	{
+		Sleep(1);
+	}
+	
+
 	m_pClient->Close();
 }
 
-void HttpHandler::resetCallbackId()
+int HttpHandler::getCallbackCount()
 {
-	m_nCallBackId = 0;
+	return m_nCallBackCount;
 }
+
+void HttpHandler::incCallbackCount()
+{
+	++m_nCallBackCount;
+}
+
+void HttpHandler::decCallbackCount()
+{
+	--m_nCallBackCount;
+}
+
+
+
 

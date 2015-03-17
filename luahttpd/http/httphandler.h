@@ -44,8 +44,9 @@ public:
 	void			doing();
 	void			getResponse(string& str);
 	void			getCookie(string& str);
-	int				getCallbackId();
-	void			resetCallbackId();
+	int				getCallbackCount();
+	void			incCallbackCount();
+	void			decCallbackCount();
 	
 	void			response();
 
@@ -56,7 +57,7 @@ private:
 	hash_map<string, string> m_mapRequest;
 	hash_map<string, string> m_mapCookie;
 	hash_map<string, string> m_mapValue;
-	int				m_nCallBackId;
+	int				m_nCallBackCount;
 	Session*		m_pSession;
 	Client*			m_pClient;
 };

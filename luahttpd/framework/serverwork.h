@@ -6,6 +6,7 @@
 #define __SERVERWORK_H_NIJIE_2013_0819__
 
 #include <ifnet.h>
+#include <ifhttp.h>
 #include "../ask/dbask.h"
 #include <map>
 
@@ -24,6 +25,7 @@ public:
 	void				run();
 
 	bool				addDBQuery(IQuery* pQuery);
+	bool				addHttpRequest(Request* pRequest);
 	SDBMysqlSN*			getBaseMysqlSN(const char* dbname);
 
 private:
@@ -34,6 +36,7 @@ private:
 private:
 	IFxNet*				m_pNet;
 	IDBModule*			m_pDB;
+	IHttp*				m_pHttp;
 
 	map<string, SDBMysqlSN>	m_mapMysqlSN;
 };

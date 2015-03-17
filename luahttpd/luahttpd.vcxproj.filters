@@ -221,6 +221,9 @@
     <ClCompile Include="lib3rd\lua\tolua\lib\tolua_to.c">
       <Filter>script\tolua</Filter>
     </ClCompile>
+    <ClCompile Include="ask\httpask.cpp">
+      <Filter>ask</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework\CrashHelper.h">
@@ -363,6 +366,9 @@
     </ClInclude>
     <ClInclude Include="framework\version.h">
       <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="ask\httpask.h">
+      <Filter>ask</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -5,7 +5,7 @@
 #ifndef __UTILITY_H_NIJIE_2012_0905__
 #define __UTILITY_H_NIJIE_2012_0905__
 
-#include "fxmeta.h"
+#include "fxtype.h"
 #ifdef WIN32
 #include <WinSock2.h>
 #include <Windows.h>

@@ -6,7 +6,7 @@
 #define __FXDB_H_2009_0824__
 
 #include "version.h"
-#include "fxmeta.h"
+#include "iflogger.h"
 
 #define MAX_DBNAME_SIZE		            64
 #define MAX_DBCHARACTSET_SIZE		    32
@@ -93,7 +93,7 @@ public:
 	static UINT32		EscapeString(const char* pszSrc, INT32 nSrcLen, char* pszDest, INT32 nDestLen);
 };
 
-class IDBModule : public IFxMeta
+class IDBModule
 {
 public:
     virtual   ~IDBModule(){}
@@ -105,6 +105,8 @@ public:
 	virtual bool        AddQuery(IQuery *poQuery) = 0;
 	
 	virtual bool        Run(UINT32 dwCount = -1) = 0;
+
+	virtual void        Release(void) = 0;
 };
 
 IDBModule *             FxDBGetModule();

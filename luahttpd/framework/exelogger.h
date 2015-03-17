@@ -4,7 +4,9 @@
 //
 #ifndef __EXELOGGER_H_NIJIE_2012_0907__
 #define __EXELOGGER_H_NIJIE_2012_0907__
-#include "fxmeta.h"
+#include "fxtype.h"
+#include "iflogger.h"
+#include "ifhelper.h"
 
 #define LOGGER_NAME_LEN 50
 

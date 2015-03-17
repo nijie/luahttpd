@@ -2,6 +2,7 @@ $#include "../http/httphandler.h"
 $#include "../http/coder.h"
 $#include "../session/session.h"
 $#include "../ask/dbask.h"
+$#include "../ask/httpask.h"
 $#include "exelogger.h"
 
 enum EHttpRequestType
@@ -83,13 +84,35 @@ public:
 
 	bool				setSN(int sn);
 	bool				setSQL(const char* pDBName, const char* pSql);
-	
+
+	bool				isOK();
 	unsigned int		count();
 	bool				begin();
 	bool				next();
 	const char*			get(unsigned int dwIndex);
 	int					getSize(unsigned int dwIndex);
 	unsigned int		getInsertId();
+};
+
+class HttpAsk
+{
+public:
+	HttpAsk();
+	virtual ~HttpAsk();
+
+	void				setSN(unsigned int dwSN);
+	unsigned int		getSN();
+	void				setRequestType(int type);
+	int					getRequestType();
+	void				setUrl(const char* pszUrl, int eType);
+	void				setUrl(const char* pszUrl);
+	void				setPostStr(const char* pszPost);
+	void				setDelay(unsigned int dwDelay);
+	unsigned int		getDelay();
+	const char*			getResponse();
+	const char*			getUrl();
+	const char*			getPostStr();
+	bool				isOK();
 };
 
 void flog(const char* txt);

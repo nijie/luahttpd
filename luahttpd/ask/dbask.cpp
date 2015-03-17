@@ -16,7 +16,6 @@ DBAsk::DBAsk()
 	m_sn = -1;
 	m_bMakeSN = false;
 
-	m_bNeedResult = false;
 	m_nResult = 0;
 	m_pResult = NULL;
 	m_insertId = 0;
@@ -61,7 +60,7 @@ bool DBAsk::setSN(int sn)
 
 void DBAsk::OnQuery(IDBConnection *poDBConnection)
 {
-	if (m_bNeedResult)
+	if (getCallBack() != 0)
 	{
 		m_nResult = poDBConnection->Query(m_strSQL.c_str(), &m_pResult);
 	}
@@ -82,20 +81,19 @@ void DBAsk::OnQuery(IDBConnection *poDBConnection)
 
 void DBAsk::OnResult(void)
 {
-	if (!m_bNeedResult)
+	if (getCallBack() == 0)
 	{
 		return;
 	}
 
 	// ½Å±¾»Øµ÷
-	bool bRet = m_nResult < 0 ? false : true;
 	HttpHandler* pHttp = getHandler();
 	if (NULL == pHttp)
 	{
 		return;
 	}
 
-	LuaScript::Instance().callBackFunc(*pHttp, *this, bRet);
+	LuaScript::Instance().callBackFunc(*pHttp, *this);
 }
 
 void DBAsk::Release(void)
@@ -105,6 +103,7 @@ void DBAsk::Release(void)
 		m_pResult->Release();
 		m_pResult = NULL;
 	}
+	delete this;
 }
 
 bool DBAsk::setSQL(const char* pDBName, const char* pSql)
@@ -125,11 +124,6 @@ bool DBAsk::setSQL(const char* pDBName, const char* pSql)
 	m_strSQL = pSql;
 
 	return true;
-}
-
-void DBAsk::setNeedResult(bool bNeedResult)
-{
-	m_bNeedResult = bNeedResult;
 }
 
 unsigned int DBAsk::count()
@@ -191,4 +185,14 @@ int DBAsk::getSize(unsigned int dwIndex)
 unsigned int DBAsk::getInsertId()
 {
 	return m_insertId;
+}
+
+bool DBAsk::isOK()
+{
+	if (m_nResult < 0)
+	{
+		return false;
+	}
+
+	return true;
 }

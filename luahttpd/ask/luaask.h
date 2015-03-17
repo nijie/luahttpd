@@ -10,6 +10,7 @@
 enum ELuaAsk
 {
 	LUA_ASK_MYSQL,
+	LUA_ASK_HTTP,
 	LUA_ASK_SERVER,
 };
 
@@ -21,6 +22,7 @@ public:
 	LuaAsk(unsigned char type)
 	{
 		m_type = type;
+		m_callback = 0;
 		m_handler = NULL;
 	}
 
@@ -41,8 +43,24 @@ public:
 		return m_handler;
 	}
 
+	bool isOK()
+	{
+		return true;
+	}
+
+	void setCallBack(int callback)
+	{
+		m_callback = callback;
+	}
+
+	int getCallBack()
+	{
+		return m_callback;
+	}
+
 private:
 	unsigned char	m_type;
+	int				m_callback;
 	HttpHandler*	m_handler;
 };
 

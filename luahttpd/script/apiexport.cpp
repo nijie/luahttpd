@@ -6,6 +6,7 @@
 #include "../http/httphandler.h"
 #include "json.h"
 #include "../ask/dbask.h"
+#include "../ask/httpask.h"
 #include "../ask/serverask.h"
 
 #include "tolua++.h"
@@ -183,7 +184,11 @@ static int tolua_luaexport_AddAsk00(lua_State* tolua_S)
 		{
 			ask = (DBAsk*)tolua_tousertype(tolua_S,2,0);
 		}
-		else if (tolua_isusertype(tolua_S,2,"DBAsk",0,&tolua_err))
+		else if (tolua_isusertype(tolua_S,2,"HttpAsk",0,&tolua_err))
+		{
+			ask = (HttpAsk*)tolua_tousertype(tolua_S,2,0);
+		}
+		else if (tolua_isusertype(tolua_S,2,"ServerAsk",0,&tolua_err))
 		{
 			ask = (ServerAsk*)tolua_tousertype(tolua_S,2,0);
 		}

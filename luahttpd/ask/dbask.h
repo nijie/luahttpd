@@ -29,12 +29,11 @@ public:
 
 	virtual void        Release(void);
 
-	void				setNeedResult(bool bNeedResult);
-
 	// lua export start
 	bool				setSN(int sn);
 	bool				setSQL(const char* pDBName, const char* pSql);
 
+	bool				isOK();
 	unsigned int		count();
 	bool				begin();
 	bool				next();
@@ -46,7 +45,6 @@ public:
 private:
 	SDBMysqlSN			m_baseSN;
 	bool				m_bMakeSN;
-	bool				m_bNeedResult;	// 是否需要结果集
 	INT32				m_sn;
 	INT32				m_nResult;
 	IDataReader*		m_pResult;

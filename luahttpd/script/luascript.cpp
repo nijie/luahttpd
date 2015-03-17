@@ -11,6 +11,7 @@
 #include "config.h"
 #include "utility.h"
 #include "../ask/dbask.h"
+#include "../ask/httpask.h"
 #include "../ask/serverask.h"
 
 #ifdef WIN32
@@ -365,9 +366,9 @@ bool LuaScript::callFunc(HttpHandler& handler)
 	return true;
 }
 
-bool LuaScript::callBackFunc(HttpHandler& handler, LuaAsk& ask, bool bRet)
+bool LuaScript::callBackFunc(HttpHandler& handler, LuaAsk& ask)
 {
-	int nFuncId = handler.getCallbackId();
+	int nFuncId = ask.getCallBack();
 	if (0 == nFuncId)
 	{
 		return false;
@@ -384,6 +385,10 @@ bool LuaScript::callBackFunc(HttpHandler& handler, LuaAsk& ask, bool bRet)
 		tolua_pushusertype(m_luaState, (DBAsk*)&ask, "DBAsk");
 		break;
 
+	case LUA_ASK_HTTP:
+		tolua_pushusertype(m_luaState, (HttpAsk*)&ask, "HttpAsk");
+		break;
+
 	case LUA_ASK_SERVER:
 		tolua_pushusertype(m_luaState, (ServerAsk*)&ask, "ServerAsk");
 		break;
@@ -393,14 +398,14 @@ bool LuaScript::callBackFunc(HttpHandler& handler, LuaAsk& ask, bool bRet)
 		break;
 	}
 
-	tolua_pushboolean(m_luaState, bRet);
-
 	luaL_resetprintbuff(m_luaState); // 打印便宜重置
 
-	handler.resetCallbackId();	// 要先清掉，因为可能在回调里面还会再增加新的回调事件
-
+	if (nFuncId != 0)
+	{
+		handler.decCallbackCount();	// 要先清掉，因为可能在回调里面还会再增加新的回调事件
+	}
 	// 调用Lua函数
-	int nStatus = lua_pcall(m_luaState, 3, 0, 0);
+	int nStatus = lua_pcall(m_luaState, 2, 0, 0);
 	if (nStatus)
 	{
 		// 调用错误，报告
@@ -409,9 +414,6 @@ bool LuaScript::callBackFunc(HttpHandler& handler, LuaAsk& ask, bool bRet)
 		handler.response();
 		return false;
 	}
-
-	// 取得返回值
-	// 无返回值
 
 	// 清理数据
 	luaL_unref(m_luaState, LUA_REGISTRYINDEX, nFuncId);

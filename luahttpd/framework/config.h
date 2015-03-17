@@ -8,7 +8,7 @@
 #include "markupstl.h"
 #include <vector>
 #include <string>
-#include "fxmeta.h"
+#include "fxtype.h"
 #include "fxdb.h"
 
 using namespace std;

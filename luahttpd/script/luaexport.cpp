@@ -1,6 +1,6 @@
 /*
 ** Lua binding: luaexport
-** Generated automatically by tolua++-1.0.92 on 03/14/15 22:27:36.
+** Generated automatically by tolua++-1.0.92 on 03/17/15 20:40:25.
 */
 
 #ifndef __cplusplus
@@ -17,10 +17,18 @@ TOLUA_API int  tolua_luaexport_open (lua_State* tolua_S);
 #include "../http/coder.h"
 #include "../session/session.h"
 #include "../ask/dbask.h"
+#include "../ask/httpask.h"
 #include "exelogger.h"
 
 /* function to release collected object via destructor */
 #ifdef __cplusplus
+
+static int tolua_collect_HttpAsk (lua_State* tolua_S)
+{
+	HttpAsk* self = (HttpAsk*) tolua_tousertype(tolua_S,1,0);
+	Mtolua_delete(self);
+	return 0;
+}
 
 static int tolua_collect_DBAsk (lua_State* tolua_S)
 {
@@ -34,9 +42,10 @@ static int tolua_collect_DBAsk (lua_State* tolua_S)
 /* function to register type */
 static void tolua_reg_types (lua_State* tolua_S)
 {
-	tolua_usertype(tolua_S,"Session");
-	tolua_usertype(tolua_S,"HttpHandler");
+	tolua_usertype(tolua_S,"HttpAsk");
 	tolua_usertype(tolua_S,"DBAsk");
+	tolua_usertype(tolua_S,"HttpHandler");
+	tolua_usertype(tolua_S,"Session");
 }
 
 /* method:	get of class 	HttpHandler */
@@ -646,6 +655,39 @@ static int	tolua_luaexport_DBAsk_setSQL00(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* method:	isOK of class 	DBAsk */
+#ifndef TOLUA_DISABLE_tolua_luaexport_DBAsk_isOK00
+static int	tolua_luaexport_DBAsk_isOK00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isusertype(tolua_S,1,"DBAsk",0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,2,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		DBAsk*	self = (DBAsk*) 	tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+	if (!self)
+		tolua_error(tolua_S,"invalid 'self' in function 'isOK'", NULL);
+#endif
+		{
+			bool	tolua_ret = (bool) 	self->isOK();
+			tolua_pushboolean(tolua_S,(bool)tolua_ret);
+		}
+	}
+	return 1;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'isOK'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* method:	count of class 	DBAsk */
 #ifndef TOLUA_DISABLE_tolua_luaexport_DBAsk_count00
 static int	tolua_luaexport_DBAsk_count00(lua_State* tolua_S)
@@ -848,6 +890,525 @@ static int	tolua_luaexport_DBAsk_getInsertId00(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* method:	new of class 	HttpAsk */
+#ifndef TOLUA_DISABLE_tolua_luaexport_HttpAsk_new00
+static int	tolua_luaexport_HttpAsk_new00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isusertable(tolua_S,1,"HttpAsk",0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,2,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		{
+			HttpAsk*	tolua_ret = (HttpAsk*) 	Mtolua_new((HttpAsk)());
+			tolua_pushusertype(tolua_S,(void*)tolua_ret,"HttpAsk");
+		}
+	}
+	return 1;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'new'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: new_local of class 	HttpAsk */
+#ifndef TOLUA_DISABLE_tolua_luaexport_HttpAsk_new00_local
+static int	tolua_luaexport_HttpAsk_new00_local(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isusertable(tolua_S,1,"HttpAsk",0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,2,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		{
+			HttpAsk*	tolua_ret = (HttpAsk*) 	Mtolua_new((HttpAsk)());
+			tolua_pushusertype(tolua_S,(void*)tolua_ret,"HttpAsk");
+			tolua_register_gc(tolua_S,lua_gettop(tolua_S));
+		}
+	}
+	return 1;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'new'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method:	delete of class 	HttpAsk */
+#ifndef TOLUA_DISABLE_tolua_luaexport_HttpAsk_delete00
+static int	tolua_luaexport_HttpAsk_delete00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isusertype(tolua_S,1,"HttpAsk",0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,2,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		HttpAsk*	self = (HttpAsk*) 	tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+	if (!self)
+		tolua_error(tolua_S,"invalid 'self' in function 'delete'", NULL);
+#endif
+	Mtolua_delete(self);
+	}
+	return 0;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'delete'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method:	setSN of class 	HttpAsk */
+#ifndef TOLUA_DISABLE_tolua_luaexport_HttpAsk_setSN00
+static int	tolua_luaexport_HttpAsk_setSN00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isusertype(tolua_S,1,"HttpAsk",0,&tolua_err) ||
+		!tolua_isnumber(tolua_S,2,0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,3,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		HttpAsk*	self = (HttpAsk*) 	tolua_tousertype(tolua_S,1,0);
+		unsigned	int	dwSN = ((unsigned	int)  tolua_tonumber(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+	if (!self)
+		tolua_error(tolua_S,"invalid 'self' in function 'setSN'", NULL);
+#endif
+		{
+			self->setSN(dwSN);
+		}
+	}
+	return 0;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'setSN'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method:	getSN of class 	HttpAsk */
+#ifndef TOLUA_DISABLE_tolua_luaexport_HttpAsk_getSN00
+static int	tolua_luaexport_HttpAsk_getSN00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isusertype(tolua_S,1,"HttpAsk",0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,2,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		HttpAsk*	self = (HttpAsk*) 	tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+	if (!self)
+		tolua_error(tolua_S,"invalid 'self' in function 'getSN'", NULL);
+#endif
+		{
+			unsigned	int	tolua_ret = (unsigned	int) 	self->getSN();
+			tolua_pushnumber(tolua_S,(lua_Number)tolua_ret);
+		}
+	}
+	return 1;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'getSN'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method:	setRequestType of class 	HttpAsk */
+#ifndef TOLUA_DISABLE_tolua_luaexport_HttpAsk_setRequestType00
+static int	tolua_luaexport_HttpAsk_setRequestType00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isusertype(tolua_S,1,"HttpAsk",0,&tolua_err) ||
+		!tolua_isnumber(tolua_S,2,0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,3,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		HttpAsk*	self = (HttpAsk*) 	tolua_tousertype(tolua_S,1,0);
+		int	type = ((int)  tolua_tonumber(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+	if (!self)
+		tolua_error(tolua_S,"invalid 'self' in function 'setRequestType'", NULL);
+#endif
+		{
+			self->setRequestType(type);
+		}
+	}
+	return 0;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'setRequestType'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method:	getRequestType of class 	HttpAsk */
+#ifndef TOLUA_DISABLE_tolua_luaexport_HttpAsk_getRequestType00
+static int	tolua_luaexport_HttpAsk_getRequestType00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isusertype(tolua_S,1,"HttpAsk",0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,2,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		HttpAsk*	self = (HttpAsk*) 	tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+	if (!self)
+		tolua_error(tolua_S,"invalid 'self' in function 'getRequestType'", NULL);
+#endif
+		{
+			int	tolua_ret = (int) 	self->getRequestType();
+			tolua_pushnumber(tolua_S,(lua_Number)tolua_ret);
+		}
+	}
+	return 1;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'getRequestType'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method:	setUrl of class 	HttpAsk */
+#ifndef TOLUA_DISABLE_tolua_luaexport_HttpAsk_setUrl00
+static int	tolua_luaexport_HttpAsk_setUrl00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isusertype(tolua_S,1,"HttpAsk",0,&tolua_err) ||
+		!tolua_isstring(tolua_S,2,0,&tolua_err) ||
+		!tolua_isnumber(tolua_S,3,0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,4,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		HttpAsk*	self = (HttpAsk*) 	tolua_tousertype(tolua_S,1,0);
+		const char*	pszUrl = ((const char*)  tolua_tostring(tolua_S,2,0));
+		int	eType = ((int)  tolua_tonumber(tolua_S,3,0));
+#ifndef TOLUA_RELEASE
+	if (!self)
+		tolua_error(tolua_S,"invalid 'self' in function 'setUrl'", NULL);
+#endif
+		{
+			self->setUrl(pszUrl,eType);
+		}
+	}
+	return 0;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'setUrl'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method:	setUrl of class 	HttpAsk */
+#ifndef TOLUA_DISABLE_tolua_luaexport_HttpAsk_setUrl01
+static int	tolua_luaexport_HttpAsk_setUrl01(lua_State* tolua_S)
+{
+	tolua_Error tolua_err;
+	if (
+		!tolua_isusertype(tolua_S,1,"HttpAsk",0,&tolua_err) ||
+		!tolua_isstring(tolua_S,2,0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,3,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+	{
+		HttpAsk*	self = (HttpAsk*) 	tolua_tousertype(tolua_S,1,0);
+		const char*	pszUrl = ((const char*)  tolua_tostring(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+	if (!self)
+		tolua_error(tolua_S,"invalid 'self' in function 'setUrl'", NULL);
+#endif
+		{
+			self->setUrl(pszUrl);
+		}
+	}
+	return 0;
+tolua_lerror:
+	return tolua_luaexport_HttpAsk_setUrl00(tolua_S);
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method:	setPostStr of class 	HttpAsk */
+#ifndef TOLUA_DISABLE_tolua_luaexport_HttpAsk_setPostStr00
+static int	tolua_luaexport_HttpAsk_setPostStr00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isusertype(tolua_S,1,"HttpAsk",0,&tolua_err) ||
+		!tolua_isstring(tolua_S,2,0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,3,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		HttpAsk*	self = (HttpAsk*) 	tolua_tousertype(tolua_S,1,0);
+		const char*	pszPost = ((const char*)  tolua_tostring(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+	if (!self)
+		tolua_error(tolua_S,"invalid 'self' in function 'setPostStr'", NULL);
+#endif
+		{
+			self->setPostStr(pszPost);
+		}
+	}
+	return 0;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'setPostStr'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method:	setDelay of class 	HttpAsk */
+#ifndef TOLUA_DISABLE_tolua_luaexport_HttpAsk_setDelay00
+static int	tolua_luaexport_HttpAsk_setDelay00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isusertype(tolua_S,1,"HttpAsk",0,&tolua_err) ||
+		!tolua_isnumber(tolua_S,2,0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,3,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		HttpAsk*	self = (HttpAsk*) 	tolua_tousertype(tolua_S,1,0);
+		unsigned	int	dwDelay = ((unsigned	int)  tolua_tonumber(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+	if (!self)
+		tolua_error(tolua_S,"invalid 'self' in function 'setDelay'", NULL);
+#endif
+		{
+			self->setDelay(dwDelay);
+		}
+	}
+	return 0;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'setDelay'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method:	getDelay of class 	HttpAsk */
+#ifndef TOLUA_DISABLE_tolua_luaexport_HttpAsk_getDelay00
+static int	tolua_luaexport_HttpAsk_getDelay00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isusertype(tolua_S,1,"HttpAsk",0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,2,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		HttpAsk*	self = (HttpAsk*) 	tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+	if (!self)
+		tolua_error(tolua_S,"invalid 'self' in function 'getDelay'", NULL);
+#endif
+		{
+			unsigned	int	tolua_ret = (unsigned	int) 	self->getDelay();
+			tolua_pushnumber(tolua_S,(lua_Number)tolua_ret);
+		}
+	}
+	return 1;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'getDelay'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method:	getResponse of class 	HttpAsk */
+#ifndef TOLUA_DISABLE_tolua_luaexport_HttpAsk_getResponse00
+static int	tolua_luaexport_HttpAsk_getResponse00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isusertype(tolua_S,1,"HttpAsk",0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,2,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		HttpAsk*	self = (HttpAsk*) 	tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+	if (!self)
+		tolua_error(tolua_S,"invalid 'self' in function 'getResponse'", NULL);
+#endif
+		{
+			const char*	tolua_ret = (const char*) 	self->getResponse();
+			tolua_pushstring(tolua_S,(const char*)tolua_ret);
+		}
+	}
+	return 1;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'getResponse'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method:	getUrl of class 	HttpAsk */
+#ifndef TOLUA_DISABLE_tolua_luaexport_HttpAsk_getUrl00
+static int	tolua_luaexport_HttpAsk_getUrl00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isusertype(tolua_S,1,"HttpAsk",0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,2,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		HttpAsk*	self = (HttpAsk*) 	tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+	if (!self)
+		tolua_error(tolua_S,"invalid 'self' in function 'getUrl'", NULL);
+#endif
+		{
+			const char*	tolua_ret = (const char*) 	self->getUrl();
+			tolua_pushstring(tolua_S,(const char*)tolua_ret);
+		}
+	}
+	return 1;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'getUrl'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method:	getPostStr of class 	HttpAsk */
+#ifndef TOLUA_DISABLE_tolua_luaexport_HttpAsk_getPostStr00
+static int	tolua_luaexport_HttpAsk_getPostStr00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isusertype(tolua_S,1,"HttpAsk",0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,2,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		HttpAsk*	self = (HttpAsk*) 	tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+	if (!self)
+		tolua_error(tolua_S,"invalid 'self' in function 'getPostStr'", NULL);
+#endif
+		{
+			const char*	tolua_ret = (const char*) 	self->getPostStr();
+			tolua_pushstring(tolua_S,(const char*)tolua_ret);
+		}
+	}
+	return 1;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'getPostStr'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method:	isOK of class 	HttpAsk */
+#ifndef TOLUA_DISABLE_tolua_luaexport_HttpAsk_isOK00
+static int	tolua_luaexport_HttpAsk_isOK00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isusertype(tolua_S,1,"HttpAsk",0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,2,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		HttpAsk*	self = (HttpAsk*) 	tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+	if (!self)
+		tolua_error(tolua_S,"invalid 'self' in function 'isOK'", NULL);
+#endif
+		{
+			bool	tolua_ret = (bool) 	self->isOK();
+			tolua_pushboolean(tolua_S,(bool)tolua_ret);
+		}
+	}
+	return 1;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'isOK'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* function:	flog */
 #ifndef TOLUA_DISABLE_tolua_luaexport_flog00
 static int	tolua_luaexport_flog00(lua_State* tolua_S)
@@ -1037,12 +1598,37 @@ TOLUA_API int tolua_luaexport_open (lua_State* tolua_S)
    tolua_function(tolua_S,"delete",tolua_luaexport_DBAsk_delete00);
    tolua_function(tolua_S,"setSN",tolua_luaexport_DBAsk_setSN00);
    tolua_function(tolua_S,"setSQL",tolua_luaexport_DBAsk_setSQL00);
+   tolua_function(tolua_S,"isOK",tolua_luaexport_DBAsk_isOK00);
    tolua_function(tolua_S,"count",tolua_luaexport_DBAsk_count00);
    tolua_function(tolua_S,"begin",tolua_luaexport_DBAsk_begin00);
    tolua_function(tolua_S,"next",tolua_luaexport_DBAsk_next00);
    tolua_function(tolua_S,"get",tolua_luaexport_DBAsk_get00);
    tolua_function(tolua_S,"getSize",tolua_luaexport_DBAsk_getSize00);
    tolua_function(tolua_S,"getInsertId",tolua_luaexport_DBAsk_getInsertId00);
+  tolua_endmodule(tolua_S);
+  #ifdef __cplusplus
+  tolua_cclass(tolua_S,"HttpAsk","HttpAsk","",tolua_collect_HttpAsk);
+  #else
+  tolua_cclass(tolua_S,"HttpAsk","HttpAsk","",NULL);
+  #endif
+  tolua_beginmodule(tolua_S,"HttpAsk");
+   tolua_function(tolua_S,"new",tolua_luaexport_HttpAsk_new00);
+   tolua_function(tolua_S,"new_local",tolua_luaexport_HttpAsk_new00_local);
+   tolua_function(tolua_S,".call",tolua_luaexport_HttpAsk_new00_local);
+   tolua_function(tolua_S,"delete",tolua_luaexport_HttpAsk_delete00);
+   tolua_function(tolua_S,"setSN",tolua_luaexport_HttpAsk_setSN00);
+   tolua_function(tolua_S,"getSN",tolua_luaexport_HttpAsk_getSN00);
+   tolua_function(tolua_S,"setRequestType",tolua_luaexport_HttpAsk_setRequestType00);
+   tolua_function(tolua_S,"getRequestType",tolua_luaexport_HttpAsk_getRequestType00);
+   tolua_function(tolua_S,"setUrl",tolua_luaexport_HttpAsk_setUrl00);
+   tolua_function(tolua_S,"setUrl",tolua_luaexport_HttpAsk_setUrl01);
+   tolua_function(tolua_S,"setPostStr",tolua_luaexport_HttpAsk_setPostStr00);
+   tolua_function(tolua_S,"setDelay",tolua_luaexport_HttpAsk_setDelay00);
+   tolua_function(tolua_S,"getDelay",tolua_luaexport_HttpAsk_getDelay00);
+   tolua_function(tolua_S,"getResponse",tolua_luaexport_HttpAsk_getResponse00);
+   tolua_function(tolua_S,"getUrl",tolua_luaexport_HttpAsk_getUrl00);
+   tolua_function(tolua_S,"getPostStr",tolua_luaexport_HttpAsk_getPostStr00);
+   tolua_function(tolua_S,"isOK",tolua_luaexport_HttpAsk_isOK00);
   tolua_endmodule(tolua_S);
   tolua_function(tolua_S,"flog",tolua_luaexport_flog00);
   tolua_function(tolua_S,"atoi",tolua_luaexport_atoi00);

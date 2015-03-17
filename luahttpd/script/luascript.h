@@ -30,7 +30,7 @@ public:
 
 	bool				callFunc(HttpHandler& handler);
 
-	bool				callBackFunc(HttpHandler& handler, LuaAsk& ask, bool bRet);
+	bool				callBackFunc(HttpHandler& handler, LuaAsk& ask);
 
 private:
 	// ±¨¸æ´íÎó

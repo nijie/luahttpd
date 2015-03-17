@@ -5,7 +5,8 @@
 #ifndef __DYNAMICPOOLEX_H_2009_1203__
 #define __DYNAMICPOOLEX_H_2009_1203__
 
-#include "fxmeta.h"
+#include "fxtype.h"
+#include "ifhelper.h"
 #include <list>
 
 class FxFakeLock : public IFxLock

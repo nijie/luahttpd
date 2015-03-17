@@ -102,14 +102,20 @@ void ServerWork::run()
 	unsigned int last = now;
 	while (true)
 	{
-		if (!m_pNet->Run(1000))
+		bool bBusy = false;
+		if (m_pNet->Run(1000))
 		{
-			FxSleep(1);
+			bBusy = true;
 		}
 
-		if (!m_pDB->Run(1000))
+		if (m_pDB->Run(1000))
 		{
-			FxSleep(1);
+			bBusy = true;
+		}
+
+		if (m_pHttp->Run(100))
+		{
+			bBusy = true;
 		}
 
 		now = GetCurTime();
@@ -118,6 +124,11 @@ void ServerWork::run()
 		{
 			SessionMgr::Instance().update(UPDATE_SESSION_TIME);
 			last = now;
+			bBusy = true;
+		}
+		if (!bBusy)
+		{
+			FxSleep(1);
 		}
 	}
 }
@@ -224,6 +235,19 @@ bool ServerWork::__initModule()
 		return false;
 	}
 
+	m_pHttp = CreateHTTPModule();
+	if (NULL == m_pHttp)
+	{
+		SYS_CRITICAL("CreateHTTPModule failed!");
+		return false;
+	}
+
+	if (!m_pHttp->Init())
+	{
+		SYS_CRITICAL("Http Module Init failed!");
+		return false;
+	}
+	
 	return true;
 }
 
@@ -240,6 +264,13 @@ void ServerWork::__uninitModule()
 		m_pDB->Release();
 		m_pDB = NULL;
 	}
+
+	if (m_pHttp)
+	{
+		m_pHttp->Release();
+		m_pHttp = NULL;
+	}
+	
 }
 
 bool ServerWork::addDBQuery(IQuery* pQuery)
@@ -271,4 +302,14 @@ SDBMysqlSN* ServerWork::getBaseMysqlSN(const char* dbname)
 	}
 
 	return &(it->second);
+}
+
+bool ServerWork::addHttpRequest(Request* pRequest)
+{
+	if (m_pHttp == NULL || NULL == pRequest) 
+	{
+		return false;
+	}
+
+	return m_pHttp->AddRequest(pRequest);
 }
