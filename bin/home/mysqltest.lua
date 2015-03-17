@@ -9,10 +9,10 @@ function mysqltest.get(h)
 	print ('select * from user;\r\n')
 end
 
-function mysqltest.onQuery(h, d, r)
+function mysqltest.onQuery(h, d)
 	print(h)
 	print(d)
-	print(r)
+	
 	if (not d:begin()) then
 		print('select failed')
 	end

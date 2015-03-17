@@ -43,6 +43,8 @@ end
 function index(h)
     local o = {"adfdasf", 1, "222", {"ss", "ddd"}, {"a", 11, "111", {"3334", "222"}}}
 	print_r(o)
+	
+	--[[
 	local json = JsonEncode(o)
 	print(json)
 	local a = JsonDecode(json)
@@ -52,12 +54,13 @@ function index(h)
 	print('base64: ' .. b64)
 	local b = Base64Decode(b64)
 	print('src: ' .. b)
+	]]
 end
 
 home = {}
 
-function home:index(h)
-	local a = {"adfdasf", 1, "222", {"ss", "ddd"}, {"a", 11, "111", {"3334", "222"}}}
+function home.index(h)
+	local a = {"adfdasf", 1, "3333", {"ss", "ddd"}, {"a", 11, "111", {"3334", "222"}}}
 	print_r(a)
 end
 
