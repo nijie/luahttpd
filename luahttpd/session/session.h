@@ -39,6 +39,7 @@ public:
 	void			setKeepTime(unsigned int uTime);
 	bool			set(const char* pKey, const char* pVal);
 	const char*		get(const char* pKey);
+	const char*		id();
 	unsigned int	getId();
 	// export end
 

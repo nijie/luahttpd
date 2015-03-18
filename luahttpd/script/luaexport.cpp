@@ -1,6 +1,6 @@
 /*
 ** Lua binding: luaexport
-** Generated automatically by tolua++-1.0.92 on 03/17/15 20:40:25.
+** Generated automatically by tolua++-1.0.92 on 03/18/15 20:01:49.
 */
 
 #ifndef __cplusplus
@@ -43,9 +43,9 @@ static int tolua_collect_DBAsk (lua_State* tolua_S)
 static void tolua_reg_types (lua_State* tolua_S)
 {
 	tolua_usertype(tolua_S,"HttpAsk");
+	tolua_usertype(tolua_S,"Session");
 	tolua_usertype(tolua_S,"DBAsk");
 	tolua_usertype(tolua_S,"HttpHandler");
-	tolua_usertype(tolua_S,"Session");
 }
 
 /* method:	get of class 	HttpHandler */
@@ -458,6 +458,39 @@ static int	tolua_luaexport_Session_get00(lua_State* tolua_S)
 #ifndef TOLUA_RELEASE
 	tolua_lerror:
 	tolua_error(tolua_S,"#ferror in function 'get'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method:	id of class 	Session */
+#ifndef TOLUA_DISABLE_tolua_luaexport_Session_id00
+static int	tolua_luaexport_Session_id00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isusertype(tolua_S,1,"Session",0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,2,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		Session*	self = (Session*) 	tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+	if (!self)
+		tolua_error(tolua_S,"invalid 'self' in function 'id'", NULL);
+#endif
+		{
+			const char*	tolua_ret = (const char*) 	self->id();
+			tolua_pushstring(tolua_S,(const char*)tolua_ret);
+		}
+	}
+	return 1;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'id'.",&tolua_err);
 	return 0;
 #endif
 }
@@ -1584,6 +1617,7 @@ TOLUA_API int tolua_luaexport_open (lua_State* tolua_S)
    tolua_function(tolua_S,"setKeepTime",tolua_luaexport_Session_setKeepTime00);
    tolua_function(tolua_S,"set",tolua_luaexport_Session_set00);
    tolua_function(tolua_S,"get",tolua_luaexport_Session_get00);
+   tolua_function(tolua_S,"id",tolua_luaexport_Session_id00);
    tolua_function(tolua_S,"getId",tolua_luaexport_Session_getId00);
   tolua_endmodule(tolua_S);
   #ifdef __cplusplus

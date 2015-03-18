@@ -11,7 +11,7 @@
 
 using namespace std;
 
-#define UPDATE_INTERVAL_SESSION (30 * 60)	// 半个小时
+#define UPDATE_INTERVAL_SESSION (7 * 24 * 60 * 60)	// 1个星期
 #define MAX_SESSION_VALUE_LEN (1024 * 16)
 
 Session::Session()
@@ -119,6 +119,11 @@ bool Session::set(const char* pKey, const char* pVal)
 	}
 	else
 	{
+		if (m_value[pKey] == pVal)
+		{
+			return true;
+		}
+		
 		m_value[pKey] = pVal;
 	}
 
@@ -159,4 +164,12 @@ unsigned int Session::getId()
 	SKeyInfo key;
 	key.qKey = m_sid;
 	return key.nKey[1];
+}
+
+const char* Session::id()
+{
+	SKeyInfo key = EncodeKey(m_sid);
+	static char s_szKey[32] = {0};
+	sprintf(s_szKey, "%llu", key.qKey);
+	return s_szKey;
 }

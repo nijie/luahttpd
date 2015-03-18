@@ -298,12 +298,7 @@ void HttpHandler::getCookie(string& str)
 {
 	if (NULL != m_pSession)
 	{
-		unsigned __int64 sid = m_pSession->getSId();
-		SKeyInfo key = EncodeKey(sid);
-
-		char szKey[32] = {0};
-		sprintf(szKey, "%llu", key.qKey);
-		m_mapCookie["sid"] = szKey;
+		m_mapCookie["sid"] = m_pSession->id();
 	}
 	
 	char szCookie[4096] = {0};

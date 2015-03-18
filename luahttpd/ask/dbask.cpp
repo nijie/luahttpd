@@ -72,6 +72,7 @@ void DBAsk::OnQuery(IDBConnection *poDBConnection)
 	if (0 > m_nResult)
 	{
 		SYS_CRITICAL("Select Error [%s]", poDBConnection->GetLastErrorString());
+		SYS_CRITICAL(m_strSQL.c_str());
 	}
 	else
 	{
