@@ -13,6 +13,8 @@
 #include "../script/luascript.h"
 #include "utility.h"
 #include "../session/sessionmgr.h"
+#include "../session/fdb.h"
+#include "../session/cache.h"
 #include "version.h"
 
 #define UPDATE_SESSION_TIME (5 * 60) // 5∑÷÷”
@@ -66,6 +68,18 @@ bool ServerWork::init()
 		return false;
 	}
 
+	if (!FDB::Instance().init())
+	{
+		SYS_CRITICAL("FDB init failed!");
+		return false;
+	}
+
+	if (!Cache::Instance().init())
+	{
+		SYS_CRITICAL("Cache init failed!");
+		return false;
+	}
+	
 	if (!LuaScript::Instance().init())
 	{
 		SYS_CRITICAL("LuaScript Init Failed!");
@@ -271,6 +285,9 @@ void ServerWork::__uninitModule()
 		m_pHttp = NULL;
 	}
 	
+	SessionMgr::Instance().uninit();
+	FDB::Instance().uninit();
+	Cache::Instance().uninit();
 }
 
 bool ServerWork::addDBQuery(IQuery* pQuery)

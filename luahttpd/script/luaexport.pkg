@@ -4,6 +4,8 @@ $#include "../session/session.h"
 $#include "../ask/dbask.h"
 $#include "../ask/httpask.h"
 $#include "exelogger.h"
+$#include "../session/fdb.h"
+$#include "../session/cache.h"
 
 enum EHttpRequestType
 {
@@ -122,3 +124,29 @@ int atoi(const char* a);
 // coder
 const char* Base64Encode(const char* pSrc);	// src -> base64
 const char* Base64Decode(const char* pDst);	// base64 -> src
+
+// cache
+void		setnn(unsigned int key, unsigned int val);
+unsigned int getnn(unsigned int key);
+
+void		setns(unsigned int key, const char* val);
+const char*	getns(unsigned int key);
+
+void		setsn(const char* key, unsigned int val);
+unsigned int getsn(const char* key);
+
+void		setss(const char* key, const char* val);
+const char* getss(const char* key);
+
+// file cache
+void		fsetnn(unsigned int key, unsigned int val);
+unsigned int fgetnn(unsigned int key);
+
+void		fsetns(unsigned int key, const char* val);
+const char*	fgetns(unsigned int key);
+
+void		fsetsn(const char* key, unsigned int val);
+unsigned int fgetsn(const char* key);
+
+void		fsetss(const char* key, const char* val);
+const char* fgetss(const char* key);

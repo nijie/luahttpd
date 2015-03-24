@@ -229,6 +229,8 @@ make.bat</Command>
     <ClCompile Include="script\apiexport.cpp" />
     <ClCompile Include="script\luaexport.cpp" />
     <ClCompile Include="script\luascript.cpp" />
+    <ClCompile Include="session\cache.cpp" />
+    <ClCompile Include="session\fdb.cpp" />
     <ClCompile Include="session\session.cpp" />
     <ClCompile Include="session\sessionmgr.cpp" />
   </ItemGroup>
@@ -278,6 +280,8 @@ make.bat</Command>
     <ClInclude Include="http\httpresponse.h" />
     <ClInclude Include="http\match.h" />
     <ClInclude Include="script\luascript.h" />
+    <ClInclude Include="session\cache.h" />
+    <ClInclude Include="session\fdb.h" />
     <ClInclude Include="session\keymaker.h" />
     <ClInclude Include="session\session.h" />
     <ClInclude Include="session\sessionmgr.h" />

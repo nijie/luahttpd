@@ -1,6 +1,6 @@
 /*
 ** Lua binding: luaexport
-** Generated automatically by tolua++-1.0.92 on 03/18/15 20:01:49.
+** Generated automatically by tolua++-1.0.92 on 03/24/15 13:14:19.
 */
 
 #ifndef __cplusplus
@@ -19,20 +19,22 @@ TOLUA_API int  tolua_luaexport_open (lua_State* tolua_S);
 #include "../ask/dbask.h"
 #include "../ask/httpask.h"
 #include "exelogger.h"
+#include "../session/fdb.h"
+#include "../session/cache.h"
 
 /* function to release collected object via destructor */
 #ifdef __cplusplus
 
-static int tolua_collect_HttpAsk (lua_State* tolua_S)
+static int tolua_collect_DBAsk (lua_State* tolua_S)
 {
-	HttpAsk* self = (HttpAsk*) tolua_tousertype(tolua_S,1,0);
+	DBAsk* self = (DBAsk*) tolua_tousertype(tolua_S,1,0);
 	Mtolua_delete(self);
 	return 0;
 }
 
-static int tolua_collect_DBAsk (lua_State* tolua_S)
+static int tolua_collect_HttpAsk (lua_State* tolua_S)
 {
-	DBAsk* self = (DBAsk*) tolua_tousertype(tolua_S,1,0);
+	HttpAsk* self = (HttpAsk*) tolua_tousertype(tolua_S,1,0);
 	Mtolua_delete(self);
 	return 0;
 }
@@ -42,10 +44,10 @@ static int tolua_collect_DBAsk (lua_State* tolua_S)
 /* function to register type */
 static void tolua_reg_types (lua_State* tolua_S)
 {
-	tolua_usertype(tolua_S,"HttpAsk");
 	tolua_usertype(tolua_S,"Session");
-	tolua_usertype(tolua_S,"DBAsk");
 	tolua_usertype(tolua_S,"HttpHandler");
+	tolua_usertype(tolua_S,"HttpAsk");
+	tolua_usertype(tolua_S,"DBAsk");
 }
 
 /* method:	get of class 	HttpHandler */
@@ -1557,6 +1559,478 @@ static int	tolua_luaexport_Base64Decode00(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* function:	setnn */
+#ifndef TOLUA_DISABLE_tolua_luaexport_setnn00
+static int	tolua_luaexport_setnn00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isnumber(tolua_S,1,0,&tolua_err) ||
+		!tolua_isnumber(tolua_S,2,0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,3,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		unsigned	int	key = ((unsigned	int)  tolua_tonumber(tolua_S,1,0));
+		unsigned	int	val = ((unsigned	int)  tolua_tonumber(tolua_S,2,0));
+		{
+			setnn(key,val);
+		}
+	}
+	return 0;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'setnn'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* function:	getnn */
+#ifndef TOLUA_DISABLE_tolua_luaexport_getnn00
+static int	tolua_luaexport_getnn00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isnumber(tolua_S,1,0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,2,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		unsigned	int	key = ((unsigned	int)  tolua_tonumber(tolua_S,1,0));
+		{
+			unsigned	int	tolua_ret = (unsigned	int) 	getnn(key);
+			tolua_pushnumber(tolua_S,(lua_Number)tolua_ret);
+		}
+	}
+	return 1;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'getnn'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* function:	setns */
+#ifndef TOLUA_DISABLE_tolua_luaexport_setns00
+static int	tolua_luaexport_setns00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isnumber(tolua_S,1,0,&tolua_err) ||
+		!tolua_isstring(tolua_S,2,0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,3,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		unsigned	int	key = ((unsigned	int)  tolua_tonumber(tolua_S,1,0));
+		const char*	val = ((const char*)  tolua_tostring(tolua_S,2,0));
+		{
+			setns(key,val);
+		}
+	}
+	return 0;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'setns'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* function:	getns */
+#ifndef TOLUA_DISABLE_tolua_luaexport_getns00
+static int	tolua_luaexport_getns00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isnumber(tolua_S,1,0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,2,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		unsigned	int	key = ((unsigned	int)  tolua_tonumber(tolua_S,1,0));
+		{
+			const char*	tolua_ret = (const char*) 	getns(key);
+			tolua_pushstring(tolua_S,(const char*)tolua_ret);
+		}
+	}
+	return 1;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'getns'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* function:	setsn */
+#ifndef TOLUA_DISABLE_tolua_luaexport_setsn00
+static int	tolua_luaexport_setsn00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isstring(tolua_S,1,0,&tolua_err) ||
+		!tolua_isnumber(tolua_S,2,0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,3,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		const char*	key = ((const char*)  tolua_tostring(tolua_S,1,0));
+		unsigned	int	val = ((unsigned	int)  tolua_tonumber(tolua_S,2,0));
+		{
+			setsn(key,val);
+		}
+	}
+	return 0;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'setsn'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* function:	getsn */
+#ifndef TOLUA_DISABLE_tolua_luaexport_getsn00
+static int	tolua_luaexport_getsn00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isstring(tolua_S,1,0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,2,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		const char*	key = ((const char*)  tolua_tostring(tolua_S,1,0));
+		{
+			unsigned	int	tolua_ret = (unsigned	int) 	getsn(key);
+			tolua_pushnumber(tolua_S,(lua_Number)tolua_ret);
+		}
+	}
+	return 1;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'getsn'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* function:	setss */
+#ifndef TOLUA_DISABLE_tolua_luaexport_setss00
+static int	tolua_luaexport_setss00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isstring(tolua_S,1,0,&tolua_err) ||
+		!tolua_isstring(tolua_S,2,0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,3,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		const char*	key = ((const char*)  tolua_tostring(tolua_S,1,0));
+		const char*	val = ((const char*)  tolua_tostring(tolua_S,2,0));
+		{
+			setss(key,val);
+		}
+	}
+	return 0;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'setss'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* function:	getss */
+#ifndef TOLUA_DISABLE_tolua_luaexport_getss00
+static int	tolua_luaexport_getss00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isstring(tolua_S,1,0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,2,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		const char*	key = ((const char*)  tolua_tostring(tolua_S,1,0));
+		{
+			const char*	tolua_ret = (const char*) 	getss(key);
+			tolua_pushstring(tolua_S,(const char*)tolua_ret);
+		}
+	}
+	return 1;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'getss'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* function:	fsetnn */
+#ifndef TOLUA_DISABLE_tolua_luaexport_fsetnn00
+static int	tolua_luaexport_fsetnn00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isnumber(tolua_S,1,0,&tolua_err) ||
+		!tolua_isnumber(tolua_S,2,0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,3,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		unsigned	int	key = ((unsigned	int)  tolua_tonumber(tolua_S,1,0));
+		unsigned	int	val = ((unsigned	int)  tolua_tonumber(tolua_S,2,0));
+		{
+			fsetnn(key,val);
+		}
+	}
+	return 0;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'fsetnn'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* function:	fgetnn */
+#ifndef TOLUA_DISABLE_tolua_luaexport_fgetnn00
+static int	tolua_luaexport_fgetnn00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isnumber(tolua_S,1,0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,2,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		unsigned	int	key = ((unsigned	int)  tolua_tonumber(tolua_S,1,0));
+		{
+			unsigned	int	tolua_ret = (unsigned	int) 	fgetnn(key);
+			tolua_pushnumber(tolua_S,(lua_Number)tolua_ret);
+		}
+	}
+	return 1;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'fgetnn'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* function:	fsetns */
+#ifndef TOLUA_DISABLE_tolua_luaexport_fsetns00
+static int	tolua_luaexport_fsetns00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isnumber(tolua_S,1,0,&tolua_err) ||
+		!tolua_isstring(tolua_S,2,0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,3,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		unsigned	int	key = ((unsigned	int)  tolua_tonumber(tolua_S,1,0));
+		const char*	val = ((const char*)  tolua_tostring(tolua_S,2,0));
+		{
+			fsetns(key,val);
+		}
+	}
+	return 0;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'fsetns'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* function:	fgetns */
+#ifndef TOLUA_DISABLE_tolua_luaexport_fgetns00
+static int	tolua_luaexport_fgetns00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isnumber(tolua_S,1,0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,2,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		unsigned	int	key = ((unsigned	int)  tolua_tonumber(tolua_S,1,0));
+		{
+			const char*	tolua_ret = (const char*) 	fgetns(key);
+			tolua_pushstring(tolua_S,(const char*)tolua_ret);
+		}
+	}
+	return 1;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'fgetns'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* function:	fsetsn */
+#ifndef TOLUA_DISABLE_tolua_luaexport_fsetsn00
+static int	tolua_luaexport_fsetsn00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isstring(tolua_S,1,0,&tolua_err) ||
+		!tolua_isnumber(tolua_S,2,0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,3,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		const char*	key = ((const char*)  tolua_tostring(tolua_S,1,0));
+		unsigned	int	val = ((unsigned	int)  tolua_tonumber(tolua_S,2,0));
+		{
+			fsetsn(key,val);
+		}
+	}
+	return 0;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'fsetsn'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* function:	fgetsn */
+#ifndef TOLUA_DISABLE_tolua_luaexport_fgetsn00
+static int	tolua_luaexport_fgetsn00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isstring(tolua_S,1,0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,2,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		const char*	key = ((const char*)  tolua_tostring(tolua_S,1,0));
+		{
+			unsigned	int	tolua_ret = (unsigned	int) 	fgetsn(key);
+			tolua_pushnumber(tolua_S,(lua_Number)tolua_ret);
+		}
+	}
+	return 1;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'fgetsn'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* function:	fsetss */
+#ifndef TOLUA_DISABLE_tolua_luaexport_fsetss00
+static int	tolua_luaexport_fsetss00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isstring(tolua_S,1,0,&tolua_err) ||
+		!tolua_isstring(tolua_S,2,0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,3,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		const char*	key = ((const char*)  tolua_tostring(tolua_S,1,0));
+		const char*	val = ((const char*)  tolua_tostring(tolua_S,2,0));
+		{
+			fsetss(key,val);
+		}
+	}
+	return 0;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'fsetss'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* function:	fgetss */
+#ifndef TOLUA_DISABLE_tolua_luaexport_fgetss00
+static int	tolua_luaexport_fgetss00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isstring(tolua_S,1,0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,2,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		const char*	key = ((const char*)  tolua_tostring(tolua_S,1,0));
+		{
+			const char*	tolua_ret = (const char*) 	fgetss(key);
+			tolua_pushstring(tolua_S,(const char*)tolua_ret);
+		}
+	}
+	return 1;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'fgetss'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* Open function */
 TOLUA_API int tolua_luaexport_open (lua_State* tolua_S)
 {
@@ -1668,6 +2142,22 @@ TOLUA_API int tolua_luaexport_open (lua_State* tolua_S)
   tolua_function(tolua_S,"atoi",tolua_luaexport_atoi00);
   tolua_function(tolua_S,"Base64Encode",tolua_luaexport_Base64Encode00);
   tolua_function(tolua_S,"Base64Decode",tolua_luaexport_Base64Decode00);
+  tolua_function(tolua_S,"setnn",tolua_luaexport_setnn00);
+  tolua_function(tolua_S,"getnn",tolua_luaexport_getnn00);
+  tolua_function(tolua_S,"setns",tolua_luaexport_setns00);
+  tolua_function(tolua_S,"getns",tolua_luaexport_getns00);
+  tolua_function(tolua_S,"setsn",tolua_luaexport_setsn00);
+  tolua_function(tolua_S,"getsn",tolua_luaexport_getsn00);
+  tolua_function(tolua_S,"setss",tolua_luaexport_setss00);
+  tolua_function(tolua_S,"getss",tolua_luaexport_getss00);
+  tolua_function(tolua_S,"fsetnn",tolua_luaexport_fsetnn00);
+  tolua_function(tolua_S,"fgetnn",tolua_luaexport_fgetnn00);
+  tolua_function(tolua_S,"fsetns",tolua_luaexport_fsetns00);
+  tolua_function(tolua_S,"fgetns",tolua_luaexport_fgetns00);
+  tolua_function(tolua_S,"fsetsn",tolua_luaexport_fsetsn00);
+  tolua_function(tolua_S,"fgetsn",tolua_luaexport_fgetsn00);
+  tolua_function(tolua_S,"fsetss",tolua_luaexport_fsetss00);
+  tolua_function(tolua_S,"fgetss",tolua_luaexport_fgetss00);
  tolua_endmodule(tolua_S);
  return 1;
 }

@@ -61,6 +61,11 @@ bool Config::init()
 	{
 		m_sessionDir += "/";
 	}
+	m_fdbDir = oXml.GetAttrib("fdb");
+	if (!m_fdbDir.empty())
+	{
+		m_fdbDir += "/";
+	}
 
 	if (!oXml.IntoElem())
 	{
@@ -198,4 +203,9 @@ string& Config::getSessionDir()
 vector<SDBMysqlInfo>& Config::getMySqlConfig()
 {
 	return m_vecMysql;
+}
+
+string& Config::getFDBDir()
+{
+	return m_fdbDir;
 }

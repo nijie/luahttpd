@@ -224,6 +224,12 @@
     <ClCompile Include="ask\httpask.cpp">
       <Filter>ask</Filter>
     </ClCompile>
+    <ClCompile Include="session\fdb.cpp">
+      <Filter>session</Filter>
+    </ClCompile>
+    <ClCompile Include="session\cache.cpp">
+      <Filter>session</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework\CrashHelper.h">
@@ -369,6 +375,12 @@
     </ClInclude>
     <ClInclude Include="ask\httpask.h">
       <Filter>ask</Filter>
+    </ClInclude>
+    <ClInclude Include="session\fdb.h">
+      <Filter>session</Filter>
+    </ClInclude>
+    <ClInclude Include="session\cache.h">
+      <Filter>session</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

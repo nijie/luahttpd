@@ -52,6 +52,7 @@ public:
 	UINT32				getMaxCount();
 	string&				getDir();
 	string&				getSessionDir();
+	string&				getFDBDir();
 
 private:
 	UINT32				m_uCount;
@@ -60,6 +61,7 @@ private:
 	vector<SDBMysqlInfo>m_vecMysql;
 	string				m_strDir;
 	string				m_sessionDir;
+	string				m_fdbDir;
 };
 
 #endif	// __CONFIG_H_NIJIE_2013_1119__
