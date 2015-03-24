@@ -61,10 +61,19 @@ bool Config::init()
 	{
 		m_sessionDir += "/";
 	}
+	else
+	{
+		m_sessionDir = "session/";
+	}
+
 	m_fdbDir = oXml.GetAttrib("fdb");
 	if (!m_fdbDir.empty())
 	{
 		m_fdbDir += "/";
+	}
+	else
+	{
+		m_fdbDir = "fdb/";
 	}
 
 	if (!oXml.IntoElem())
