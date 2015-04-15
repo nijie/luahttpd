@@ -7,6 +7,7 @@
 #include "clientmgr.h"
 #include "../http/httphandler.h"
 
+
 Client::Client()
 {
 	m_handler = NULL;
@@ -24,12 +25,13 @@ bool Client::init()
 
 void Client::reset()
 {
+	m_id = 0;
 	m_handler = NULL;
 }
 
 void Client::OnConnect(void)
 {
-
+	m_tick = 200; // 200 * 100ºÁÃë = 20Ãë
 }
 
 void Client::OnClose(void)
@@ -63,6 +65,7 @@ void Client::OnRecv(const char* pBuf, UINT32 dwLen)
 		return;
 	}
 
+	m_tick = 255;
 	m_handler->doing();
 }
 
@@ -85,4 +88,37 @@ char* Client::GetRecvBuf()
 UINT32 Client::GetRecvSize()
 {
 	return MAX_CLIENT_PACKET_LEN;
+}
+
+UINT8 Client::getTick()
+{
+	return m_tick;
+}
+
+void Client::decTick()
+{
+	if (m_tick == 255)
+	{
+		return;
+	}
+	
+	if (m_tick > 0)
+	{
+		--m_tick;
+	}
+}
+
+void Client::setTick(UINT8 tick)
+{
+	m_tick = tick;
+}
+
+void Client::setId(UINT32 id)
+{
+	m_id = id;
+}
+
+UINT32 Client::getId()
+{
+	return m_id;
 }

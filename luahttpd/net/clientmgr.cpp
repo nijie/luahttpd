@@ -7,7 +7,8 @@
 
 ClientMgr::ClientMgr()
 {
-
+	m_mapClient.set_empty_key(0);
+	m_mapClient.set_deleted_key(-1);
 }
 
 ClientMgr::~ClientMgr()
@@ -28,6 +29,7 @@ bool ClientMgr::init()
 		return false;
 	}
 
+	m_index = 0;
 	return true;
 }
 
@@ -51,6 +53,14 @@ FxSession* ClientMgr::CreateSession()
 		return NULL;
 	}
 
+	pClient->setId(++m_index);
+	m_mapClient[m_index] = pClient;
+
+	if (m_index >= 0xff0000)
+	{
+		m_index = 0;
+	}
+	
 	return pClient;
 }
 
@@ -59,6 +69,12 @@ void ClientMgr::releaseSession(Client* pClient)
 	if (NULL == pClient)
 	{
 		return;
+	}
+
+	UINT32 id = pClient->getId();
+	if (id != 0)
+	{
+		m_mapClient.erase(id);
 	}
 
 	pClient->reset();
@@ -80,4 +96,26 @@ void ClientMgr::releaseHttpHandler(HttpHandler* pHttp)
 
 	pHttp->reset();
 	m_poolHttp.ReleaseObj(pHttp);
+}
+
+void ClientMgr::update()
+{
+	google::dense_hash_map<unsigned int, Client*>::iterator it = m_mapClient.begin();
+	for (; it != m_mapClient.end(); ++it)
+	{
+		Client* client = it->second;
+		if (NULL == client)
+		{
+			continue;
+		}
+		
+		if (0 != client->getTick())
+		{
+			client->decTick();
+		}
+		else
+		{
+			client->Close();
+		}
+	}
 }

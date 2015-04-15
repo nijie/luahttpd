@@ -26,7 +26,16 @@ public:
 	virtual char*       GetRecvBuf();
 	virtual UINT32      GetRecvSize();
 
+	UINT8				getTick();
+	void				decTick();
+	void				setTick(UINT8 tick);
+
+	void				setId(UINT32 id);
+	UINT32				getId();
+
 private:
+	UINT8				m_tick;
+	UINT32				m_id;
 	HttpHandler*		m_handler;
 };
 

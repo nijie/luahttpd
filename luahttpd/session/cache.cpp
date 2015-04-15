@@ -18,6 +18,18 @@ Cache& Cache::Instance()
 
 bool Cache::init()
 {
+	m_mapns.set_empty_key(0);
+	m_mapns.set_deleted_key(-1);
+
+	m_mapsn.set_empty_key("");
+	m_mapsn.set_deleted_key(" ");
+
+	m_mapnn.set_empty_key(0);
+	m_mapnn.set_deleted_key(-1);
+
+	m_mapss.set_empty_key("");
+	m_mapss.set_deleted_key(" ");
+
 	m_mapns.clear();
 	m_mapsn.clear();
 	m_mapnn.clear();

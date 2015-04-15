@@ -17,7 +17,8 @@
 #include "../session/cache.h"
 #include "version.h"
 
-#define UPDATE_SESSION_TIME (5 * 60) // 5·ÖÖÓ
+#define UPDATE_SESSION_TIME (5 * 60 * 1000) // 5·ÖÖÓ
+#define UPDATE_CLIENT_TIME (1 * 100) // 100ºÁÃë
 
 ServerWork::ServerWork()
 {
@@ -112,8 +113,9 @@ void ServerWork::run()
 	SYS_CRITICAL("--------------- Server Start ! ---------------");
 	printf("--------------- Server Start ! ---------------\r\n");
 
-	unsigned int now = GetCurTime();
-	unsigned int last = now;
+	unsigned int now = GetTickCount();
+	unsigned int lastSessionUpdate = now;
+	unsigned int lastClientUpdate = now;
 	while (true)
 	{
 		bool bBusy = false;
@@ -132,12 +134,19 @@ void ServerWork::run()
 			bBusy = true;
 		}
 
-		now = GetCurTime();
+		now = GetTickCount();
 
-		if (now - last >= UPDATE_SESSION_TIME)
+		if (now - lastClientUpdate >= UPDATE_CLIENT_TIME)
+		{
+			ClientMgr::Instance().update();
+			lastClientUpdate = now;
+			bBusy = true;
+		}
+
+		if (now - lastSessionUpdate >= UPDATE_SESSION_TIME)
 		{
 			SessionMgr::Instance().update(UPDATE_SESSION_TIME);
-			last = now;
+			lastSessionUpdate = now;
 			bBusy = true;
 		}
 		if (!bBusy)

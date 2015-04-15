@@ -77,5 +77,9 @@ void HttpResponse::appendResponse(const char* pdata)
 		return;
 	}
 	m_arValues[HTTP_RESPONSE_DATA].append(pdata);
+	char buff[16] = {0};
+	int len = m_arValues[HTTP_RESPONSE_DATA].size();
+	sprintf(buff, "%u", len);
+	m_arValues[HTTP_RESPONSE_CONTENT_LENGTH] = buff;
 }
 

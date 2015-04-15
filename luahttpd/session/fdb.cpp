@@ -88,7 +88,7 @@ void FDB::setns(unsigned int key, const char* val)
 
 const char* FDB::getns(unsigned int key)
 {
-	string strData;
+	static  string strData;
 	leveldb::Status ret = m_db->Get(m_readOpt, key, &strData);
 	if (ret.ok())
 	{
@@ -159,7 +159,7 @@ const char* FDB::getss(const char* key)
 		return "";
 	}
 
-	string strData;
+	static string strData;
 	leveldb::Status ret = m_db->Get(m_readOpt, key, &strData);
 	if (ret.ok())
 	{

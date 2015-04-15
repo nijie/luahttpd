@@ -11,7 +11,7 @@
 
 using namespace std;
 
-#define UPDATE_INTERVAL_SESSION (7 * 24 * 60 * 60)	// 1个星期
+#define UPDATE_INTERVAL_SESSION (7 * 24 * 60 * 60 * 1000)	// 1个星期
 #define MAX_SESSION_VALUE_LEN (1024 * 16)
 
 Session::Session()

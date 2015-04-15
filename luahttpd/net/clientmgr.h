@@ -5,6 +5,7 @@
 #ifndef __CLIENTMGR_H_NIJIE_2013_1119__
 #define __CLIENTMGR_H_NIJIE_2013_1119__
 
+#include "sparsehash/dense_hash_map"
 #include "dynamicpoolex.h"
 #include "client.h"
 #include "ifnet.h"
@@ -24,10 +25,14 @@ public:
 
 	HttpHandler*		CreateHttpHandler();
 	void				releaseHttpHandler(HttpHandler* pHttp);
-
+	
+	void				update();
+	
 private:
+	unsigned int		m_index;
 	TDynamicPoolEx<Client>	m_poolClient;
 	TDynamicPoolEx<HttpHandler>	m_poolHttp;
+	google::dense_hash_map<unsigned int, Client*> m_mapClient;
 };
 
 #endif	// __CLIENTMGR_H_NIJIE_2013_1119__

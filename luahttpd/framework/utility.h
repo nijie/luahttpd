@@ -168,6 +168,16 @@ inline bool HasState(UINT32 val, UINT32 comp)
 	return false;
 }
 
+#ifndef WIN32 
+// 返回自系统开机以来的毫秒数（tick）  
+unsigned long GetTickCount()  
+{  
+	struct timespec ts;  
+	clock_gettime(CLOCK_MONOTONIC, &ts);  
+	return (ts.tv_sec * 1000 + ts.tv_nsec / 1000000);  
+} 
+#endif
+
 inline UINT32 GetCurTime()
 {
 #ifdef WIN32

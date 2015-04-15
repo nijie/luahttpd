@@ -441,14 +441,7 @@ void HttpHandler::response()
 			}
 		}
 	}
-
-	if (count > 8096)
-	{
-		Sleep(1);
-	}
-	
-
-	m_pClient->Close();
+	m_pClient->setTick(1); // 延迟1 - 2 个tick秒关闭，避免还没发出去就关闭了
 }
 
 int HttpHandler::getCallbackCount()
