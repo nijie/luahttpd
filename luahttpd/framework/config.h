@@ -13,7 +13,7 @@
 
 using namespace std;
 
-#define MAX_CLIENT_PACKET_LEN (4 * 1024)
+#define MAX_CLIENT_PACKET_LEN (8 * 1024)
 
 struct SHttpConfig 
 {

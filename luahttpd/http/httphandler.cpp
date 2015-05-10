@@ -5,7 +5,7 @@
 #include "httphandler.h"
 #include "utility.h"
 #include "../session/sessionmgr.h"
-#include "../session/keymaker.h"
+#include "../crypto/keymaker.h"
 #include "../script/luascript.h"
 #include "../ask/dbask.h"
 #include "serverwork.h"
@@ -15,6 +15,8 @@
 #include <hash_map>
 
 using namespace stdext;
+
+#define HTTP_SEND_PACKET_LEN (4 * 1024)
 
 HttpHandler::HttpHandler()
 {
@@ -420,12 +422,12 @@ void HttpHandler::response()
 	const char* ptr = str.c_str();
 	int count = (int)str.size();
 
-	for (int i = 0; i < count; i += 1024)
+	for (int i = 0; i < count; i += HTTP_SEND_PACKET_LEN)
 	{
 		int len = count - i;
-		if (len > 1024)
+		if (len > HTTP_SEND_PACKET_LEN)
 		{
-			len = 1024;
+			len = HTTP_SEND_PACKET_LEN;
 		}
 		
 		while (true)

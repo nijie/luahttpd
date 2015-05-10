@@ -6,6 +6,7 @@ $#include "../ask/httpask.h"
 $#include "exelogger.h"
 $#include "../session/fdb.h"
 $#include "../session/cache.h"
+$#include "../crypto/md5.h"
 
 enum EHttpRequestType
 {
@@ -150,3 +151,6 @@ unsigned int fgetsn(const char* key);
 
 void		fsetss(const char* key, const char* val);
 const char* fgetss(const char* key);
+
+// crypto
+const char* md5(const char* input);

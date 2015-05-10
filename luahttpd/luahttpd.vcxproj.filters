@@ -30,6 +30,9 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="crypto">
+      <UniqueIdentifier>{da7a4a76-8c00-4330-ac75-8dab2d12acf8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -230,6 +233,9 @@
     <ClCompile Include="session\cache.cpp">
       <Filter>session</Filter>
     </ClCompile>
+    <ClCompile Include="crypto\md5.cpp">
+      <Filter>crypto</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework\CrashHelper.h">
@@ -285,9 +291,6 @@
     </ClInclude>
     <ClInclude Include="http\coder.h">
       <Filter>http</Filter>
-    </ClInclude>
-    <ClInclude Include="session\keymaker.h">
-      <Filter>session</Filter>
     </ClInclude>
     <ClInclude Include="session\session.h">
       <Filter>session</Filter>
@@ -381,6 +384,12 @@
     </ClInclude>
     <ClInclude Include="session\cache.h">
       <Filter>session</Filter>
+    </ClInclude>
+    <ClInclude Include="crypto\keymaker.h">
+      <Filter>crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="crypto\md5.h">
+      <Filter>crypto</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

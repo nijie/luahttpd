@@ -1,6 +1,6 @@
 /*
 ** Lua binding: luaexport
-** Generated automatically by tolua++-1.0.92 on 03/24/15 13:14:19.
+** Generated automatically by tolua++-1.0.92 on 04/16/15 15:17:17.
 */
 
 #ifndef __cplusplus
@@ -21,6 +21,7 @@ TOLUA_API int  tolua_luaexport_open (lua_State* tolua_S);
 #include "exelogger.h"
 #include "../session/fdb.h"
 #include "../session/cache.h"
+#include "../crypto/md5.h"
 
 /* function to release collected object via destructor */
 #ifdef __cplusplus
@@ -2031,6 +2032,35 @@ static int	tolua_luaexport_fgetss00(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* function:	md5 */
+#ifndef TOLUA_DISABLE_tolua_luaexport_md500
+static int	tolua_luaexport_md500(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+	tolua_Error tolua_err;
+	if (
+		!tolua_isstring(tolua_S,1,0,&tolua_err) ||
+		!tolua_isnoobj(tolua_S,2,&tolua_err)
+	)
+		goto tolua_lerror;
+	else
+#endif
+	{
+		const char*	input = ((const char*)  tolua_tostring(tolua_S,1,0));
+		{
+			const char*	tolua_ret = (const char*) 	md5(input);
+			tolua_pushstring(tolua_S,(const char*)tolua_ret);
+		}
+	}
+	return 1;
+#ifndef TOLUA_RELEASE
+	tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'md5'.",&tolua_err);
+	return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* Open function */
 TOLUA_API int tolua_luaexport_open (lua_State* tolua_S)
 {
@@ -2158,6 +2188,7 @@ TOLUA_API int tolua_luaexport_open (lua_State* tolua_S)
   tolua_function(tolua_S,"fgetsn",tolua_luaexport_fgetsn00);
   tolua_function(tolua_S,"fsetss",tolua_luaexport_fsetss00);
   tolua_function(tolua_S,"fgetss",tolua_luaexport_fgetss00);
+  tolua_function(tolua_S,"md5",tolua_luaexport_md500);
  tolua_endmodule(tolua_S);
  return 1;
 }

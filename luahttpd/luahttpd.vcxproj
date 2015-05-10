@@ -173,6 +173,7 @@ make.bat</Command>
     <ClCompile Include="ask\dbask.cpp" />
     <ClCompile Include="ask\httpask.cpp" />
     <ClCompile Include="ask\serverask.cpp" />
+    <ClCompile Include="crypto\md5.cpp" />
     <ClCompile Include="framework\config.cpp" />
     <ClCompile Include="framework\CrashHelper.cpp" />
     <ClCompile Include="framework\exelogger.cpp" />
@@ -239,6 +240,8 @@ make.bat</Command>
     <ClInclude Include="ask\httpask.h" />
     <ClInclude Include="ask\luaask.h" />
     <ClInclude Include="ask\serverask.h" />
+    <ClInclude Include="crypto\keymaker.h" />
+    <ClInclude Include="crypto\md5.h" />
     <ClInclude Include="framework\config.h" />
     <ClInclude Include="framework\CrashHelper.h" />
     <ClInclude Include="framework\exelogger.h" />
@@ -282,7 +285,6 @@ make.bat</Command>
     <ClInclude Include="script\luascript.h" />
     <ClInclude Include="session\cache.h" />
     <ClInclude Include="session\fdb.h" />
-    <ClInclude Include="session\keymaker.h" />
     <ClInclude Include="session\session.h" />
     <ClInclude Include="session\sessionmgr.h" />
   </ItemGroup>

@@ -6,7 +6,7 @@
 #include "config.h"
 #include "exelogger.h"
 #include <time.h>
-#include "keymaker.h"
+#include "../crypto/keymaker.h"
 #include "utility.h"
 
 #define MAX_SESSIONID_DIFF 256

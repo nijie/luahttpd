@@ -1,11 +1,10 @@
 <config>
     <http count="3000" dir="home" session="">
-		<item ip="0" port="80" recvbuf="4096" sendbuf="8192"/>
+		<item ip="0" port="81" recvbuf="4096" sendbuf="8192"/>
 	</http>
 	
 	<db type="mysql" >
-		<item ip="127.0.0.1" port="3306" user="root" pwd="root" dbname="luahttpd" char="gb2312" count="16" />
-		<item ip="127.0.0.1" port="3306" user="root" pwd="root" dbname="luahttpd2" char="gb2312" count="2" />
+		<item ip="127.0.0.1" port="3306" user="root" pwd="000000" dbname="zldb" char="utf8" count="16" />
 	</db>
 	
 	<server>
