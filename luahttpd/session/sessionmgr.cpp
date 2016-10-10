@@ -2,6 +2,7 @@
 // Copyright (c) 2014 Nijie. All rights reserved.
 // Use of this source code is governed by a GPL-2 license that can be found in the LICENSE file. 
 //
+
 #include "sessionmgr.h"
 #include "config.h"
 #include "exelogger.h"

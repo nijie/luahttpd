@@ -10,8 +10,6 @@
 #include <stdio.h>
 #include <tchar.h>
 
-#include <hash_map>
-using namespace stdext;
 
 #else
 
@@ -30,8 +28,6 @@ using namespace stdext;
 //#include <sys/socket.h>
 //#include <netinet/in.h>
 
-#include <ext/hash_map>
-using namespace __gnu_cxx;
 #endif
 
 #endif	// __INLSYS_H_NIJIE_2012_0906__

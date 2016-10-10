@@ -12,7 +12,7 @@
 #include "../net/client.h"
 #include "../ask/httpask.h"
 
-#include <hash_map>
+#include <map>
 
 using namespace stdext;
 
@@ -194,7 +194,7 @@ const char* HttpHandler::get(int type)
 
 const char* HttpHandler::get(const char* key)
 {
-	hash_map<string, string>::iterator it = m_mapRequest.find(string(key));
+	map<string, string>::iterator it = m_mapRequest.find(string(key));
 
 	if (it == m_mapRequest.end())
 	{
@@ -287,7 +287,7 @@ const char* HttpHandler::getCookie(const char* key)
 		return "";
 	}
 
-	hash_map<string, string>::iterator it = m_mapCookie.find(key);
+	map<string, string>::iterator it = m_mapCookie.find(key);
 	if (m_mapCookie.end() == it)
 	{
 		return "";
@@ -307,7 +307,7 @@ void HttpHandler::getCookie(string& str)
 
 	bool bFirst = true;
 
-	for (hash_map<string, string>::iterator it = m_mapCookie.begin(); it != m_mapCookie.end(); ++it)
+	for (map<string, string>::iterator it = m_mapCookie.begin(); it != m_mapCookie.end(); ++it)
 	{
 		if (bFirst)
 		{
@@ -338,7 +338,7 @@ const char* HttpHandler::getValue(const char* pKey)
 		return "";
 	}
 
-	hash_map<string, string>::iterator it = m_mapValue.find(pKey);
+	map<string, string>::iterator it = m_mapValue.find(pKey);
 	if (it == m_mapValue.end())
 	{
 		return "";

@@ -9,6 +9,9 @@
 #include "httpresponse.h"
 
 #include "inlsys.h"
+#include <map>
+
+using namespace std;
 
 class Session;
 class LuaAsk;
@@ -54,9 +57,9 @@ private:
 	HttpParser		m_parse;
 	HttpResponse	m_response;
 	string			m_strCmd;		// «Î«Ûµƒ√¸¡Ó
-	hash_map<string, string> m_mapRequest;
-	hash_map<string, string> m_mapCookie;
-	hash_map<string, string> m_mapValue;
+	map<string, string> m_mapRequest;
+	map<string, string> m_mapCookie;
+	map<string, string> m_mapValue;
 	int				m_nCallBackCount;
 	Session*		m_pSession;
 	Client*			m_pClient;

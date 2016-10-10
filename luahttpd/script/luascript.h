@@ -9,6 +9,7 @@
 #include "inlsys.h"
 
 #include <string>
+#include <map>
 
 using namespace std;
 
@@ -42,7 +43,7 @@ private:
 
 private:
 	lua_State*          m_luaState;                     // Lua״̬
-	hash_map<string, int> m_mapFunc;
+	map<string, int> m_mapFunc;
 };
 
 #endif	// __LUASCRIPT_H_NIJIE_2012_1015__

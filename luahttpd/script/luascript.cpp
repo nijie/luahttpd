@@ -2,6 +2,7 @@
 // Copyright (c) 2014 Nijie. All rights reserved.
 // Use of this source code is governed by a GPL-2 license that can be found in the LICENSE file. 
 //
+
 #include "luascript.h"
 #include "exelogger.h"
 #include "tolua++.h"
@@ -279,7 +280,7 @@ bool LuaScript::callFunc(HttpHandler& handler)
 
 	int nFuncId = 0;
 
-	hash_map<string, int>::iterator it = m_mapFunc.find(strCmd.c_str());
+	map<string, int>::iterator it = m_mapFunc.find(strCmd.c_str());
 	if (m_mapFunc.end() == it)
 	{
 		vector<string> vecClass;
