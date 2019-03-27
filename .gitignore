@@ -14,3 +14,7 @@
 # Executables
 *.out
 *.app
+*.user
+
+.vs/
+Debug/
