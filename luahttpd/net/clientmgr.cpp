@@ -7,8 +7,6 @@
 
 ClientMgr::ClientMgr()
 {
-	m_mapClient.set_empty_key(0);
-	m_mapClient.set_deleted_key(-1);
 }
 
 ClientMgr::~ClientMgr()
@@ -100,7 +98,7 @@ void ClientMgr::releaseHttpHandler(HttpHandler* pHttp)
 
 void ClientMgr::update()
 {
-	google::dense_hash_map<unsigned int, Client*>::iterator it = m_mapClient.begin();
+	unordered_map<unsigned int, Client*>::iterator it = m_mapClient.begin();
 	for (; it != m_mapClient.end(); ++it)
 	{
 		Client* client = it->second;

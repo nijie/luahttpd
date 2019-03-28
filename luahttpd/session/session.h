@@ -5,8 +5,9 @@
 #ifndef __SESSION_H_NIJIE_2014_0603__
 #define __SESSION_H_NIJIE_2014_0603__
 
-#include "json.h"
+#include "json/json.h"
 #include <string>
+#include "fxtype.h"
 
 using namespace std;
 
@@ -22,10 +23,10 @@ public:
 	Session();
 	~Session();
 
-	bool			init(unsigned __int64 sid);
+	bool			init(uint64 sid);
 	void			reset();
 
-	unsigned __int64 getSId();
+	uint64			getSId();
 
 	bool			loadData(const char* pData, unsigned int len);
 	string			getData();
@@ -44,7 +45,7 @@ public:
 	// export end
 
 private:
-	unsigned __int64 m_sid;
+	uint64			m_sid;
 	int				m_interval;	// 保存时间间隔
 
 	bool			m_bDirty;	// 是否有脏数据

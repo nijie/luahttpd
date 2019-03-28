@@ -960,7 +960,7 @@ LUALIB_API void luaL_setprintbuff (lua_State *L, const char *buff, int size)
 {
 	L->print_buf.offset = 0;
 	L->print_buf.size = size;
-	L->print_buf.pbuf = buff;
+	L->print_buf.pbuf = (char*)buff;
 }
 
 LUALIB_API void luaL_resetprintbuff (lua_State *L)

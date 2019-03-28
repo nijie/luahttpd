@@ -218,7 +218,7 @@ bool LuaScript::__travel(const char* pszPath)
 				{
 					if (false == __loadModule(strModule.c_str()))
 					{
-						SYS_CRITICAL("__LoadModule \"%s\", File \"%s\" fail.", strModule.c_str(), strPath);
+						SYS_CRITICAL("__LoadModule \"%s\", File \"%s\" fail.", strModule.c_str(), strPath.c_str());
 						return false;
 					}
 				}
@@ -245,7 +245,7 @@ bool LuaScript::__travel(const char* pszPath)
 				{
 					if (false == __loadModule(strModule.c_str()))
 					{
-						SYS_CRITICAL("__LoadModule \"%s\", File \"%s\" fail.", strModule.c_str(), strPath);
+						SYS_CRITICAL("__LoadModule \"%s\", File \"%s\" fail.", strModule.c_str(), strPath.c_str());
 						return false;
 					}
 				}

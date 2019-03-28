@@ -170,7 +170,7 @@ inline bool HasState(UINT32 val, UINT32 comp)
 
 #ifndef WIN32 
 // 返回自系统开机以来的毫秒数（tick）  
-unsigned long GetTickCount()  
+inline unsigned long GetTickCount()  
 {  
 	struct timespec ts;  
 	clock_gettime(CLOCK_MONOTONIC, &ts);  
@@ -190,10 +190,16 @@ inline UINT32 GetCurTime()
 inline const char* GetHttpTime(UINT32 uTime)
 {
 	static char szbuff[128];
+#ifdef WIN32
 	__time32_t t = (__time32_t)uTime;
 	tm * gmTime = _gmtime32(&t);
+#else
+	time_t t = time(NULL);
+	tm * gmTime = localtime(&t);
+#endif
 
 	strftime(szbuff, 127, " %a, %d %b %Y %X GMT", gmTime);
+
 	return szbuff;
 }
 
@@ -217,6 +223,7 @@ inline UINT32 MakeTimeU32(tm& t)
 	return time;
 }
 
+#ifdef WIN32
 inline bool mbs2wcs(const char* pSrc, wchar_t* pdst, int count)
 {
 	int ret = ::MultiByteToWideChar(CP_ACP, MB_PRECOMPOSED, pSrc, -1, pdst, count);
@@ -264,6 +271,7 @@ inline bool wcs2mbs(const wchar_t* pSrc, char* pdst, int count)
 
 	return true;
 }
+#endif
 
 inline int bit2int(char *array,int strlen,int *mask,int last_iterator)
 {
@@ -289,7 +297,11 @@ inline int countbit(int n)
 template <size_t size>
 void copystr(char (&dst)[size], const char* src)
 {
+#ifdef WIN32
 	strcpy_s(dst, src);
+#else
+	strcpy(dst, src);
+#endif
 }
 
 #endif	// __UTILITY_H_NIJIE_2012_0905__

@@ -18,18 +18,6 @@ Cache& Cache::Instance()
 
 bool Cache::init()
 {
-	m_mapns.set_empty_key(0);
-	m_mapns.set_deleted_key(-1);
-
-	m_mapsn.set_empty_key("");
-	m_mapsn.set_deleted_key(" ");
-
-	m_mapnn.set_empty_key(0);
-	m_mapnn.set_deleted_key(-1);
-
-	m_mapss.set_empty_key("");
-	m_mapss.set_deleted_key(" ");
-
 	m_mapns.clear();
 	m_mapsn.clear();
 	m_mapnn.clear();
@@ -50,7 +38,7 @@ void Cache::setnn(unsigned int key, unsigned int val)
 
 unsigned int Cache::getnn(unsigned int key)
 {
-	google::dense_hash_map<unsigned int, unsigned int>::iterator it = m_mapnn.find(key);
+	unordered_map<unsigned int, unsigned int>::iterator it = m_mapnn.find(key);
 	if (it == m_mapnn.end())
 	{
 		return 0;
@@ -69,7 +57,7 @@ void Cache::setns(unsigned int key, const char* val)
 
 const char* Cache::getns(unsigned int key)
 {
-	google::dense_hash_map<unsigned int, string>::iterator it = m_mapns.find(key);
+	unordered_map<unsigned int, string>::iterator it = m_mapns.find(key);
 	if (it == m_mapns.end())
 	{
 		return "";
@@ -92,7 +80,7 @@ unsigned int Cache::getsn(const char* key)
 	{
 		return 0;
 	}
-	google::dense_hash_map<string, unsigned int>::iterator it = m_mapsn.find(key);
+	unordered_map<string, unsigned int>::iterator it = m_mapsn.find(key);
 	if (it == m_mapsn.end())
 	{
 		return 0;
@@ -115,7 +103,7 @@ const char* Cache::getss(const char* key)
 	{
 		return 0;
 	}
-	google::dense_hash_map<string, string>::iterator it = m_mapss.find(key);
+	unordered_map<string, string>::iterator it = m_mapss.find(key);
 	if (it == m_mapss.end())
 	{
 		return 0;

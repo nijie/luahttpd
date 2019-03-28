@@ -33,7 +33,7 @@ bool HttpResponse::init(HttpParser& http)
 	return true;
 }
 
-void HttpResponse::set(int type, string& str)
+void HttpResponse::set(int type, const string& str)
 {
 	if (type < 0 || type >= HTTP_RESPONSE_SIZE)
 	{

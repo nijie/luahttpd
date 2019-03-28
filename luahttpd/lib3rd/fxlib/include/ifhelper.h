@@ -10,6 +10,8 @@
 
 #ifdef WIN32
 typedef void *HANDLE;
+#else
+#include <pthread.h>
 #endif
 
 class IFxLock
@@ -64,7 +66,11 @@ public:
     UINT32				GetThreadId(void);
 
 private:
+#ifdef WIN32
 	static unsigned int __stdcall __StaticThreadFunc(void *arg);
+#else
+	static unsigned int __StaticThreadFunc(void *arg);
+#endif
 
 private:
 	bool                    m_bNeedWaitfor;

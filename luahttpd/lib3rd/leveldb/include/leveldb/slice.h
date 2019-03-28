@@ -19,10 +19,11 @@
 #include <stddef.h>
 #include <string.h>
 #include <string>
+#include "leveldb/export.h"
 
 namespace leveldb {
 
-class Slice {
+class LEVELDB_EXPORT Slice {
  public:
   // Create an empty slice.
   Slice() : data_(""), size_(0) { }
@@ -40,7 +41,12 @@ class Slice {
 
   Slice(const unsigned int& s) : data_((char*)&s), size_(sizeof(unsigned int)) { }
 
-  Slice(const __int64& s) : data_((char*)&s), size_(sizeof(__int64)) { }
+  Slice(const long long& s) : data_((char*)&s), size_(sizeof(long long)) { }
+  Slice(const unsigned long long& s) : data_((char*)&s), size_(sizeof(unsigned long long)) { }
+
+  // Intentionally copyable.
+  Slice(const Slice&) = default;
+  Slice& operator=(const Slice&) = default;
 
   // Return a pointer to the beginning of the referenced data
   const char* data() const { return data_; }
@@ -86,8 +92,6 @@ class Slice {
  private:
   const char* data_;
   size_t size_;
-
-  // Intentionally copyable
 };
 
 inline bool operator==(const Slice& x, const Slice& y) {
@@ -100,7 +104,7 @@ inline bool operator!=(const Slice& x, const Slice& y) {
 }
 
 inline int Slice::compare(const Slice& b) const {
-  const int min_len = (size_ < b.size_) ? size_ : b.size_;
+  const size_t min_len = (size_ < b.size_) ? size_ : b.size_;
   int r = memcmp(data_, b.data_, min_len);
   if (r == 0) {
     if (size_ < b.size_) r = -1;

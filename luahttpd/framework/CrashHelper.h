@@ -5,6 +5,8 @@
 #ifndef __CRASH_HELPER_H__
 #define __CRASH_HELPER_H__
 
+#ifdef WIN32
+
 #include <Windows.h>
 class CrashHelper
 {
@@ -27,5 +29,6 @@ public:
 private:
 	static DWORD ms_dwCreashThreadId;
 };
+#endif
 
 #endif //__CRASH_HELPER_H__

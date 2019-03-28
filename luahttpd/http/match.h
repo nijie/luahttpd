@@ -5,6 +5,7 @@
 #ifndef __MATCH_H_NIJIE_2013_1120__
 #define __MATCH_H_NIJIE_2013_1120__
 
+#include "stdafx.h"
 #include <vector>
 
 using namespace std;

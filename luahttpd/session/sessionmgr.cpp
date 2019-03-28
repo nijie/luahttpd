@@ -15,8 +15,6 @@
 
 SessionMgr::SessionMgr()
 {
-	m_mapSession.set_empty_key(0);
-	m_mapSession.set_deleted_key(-1);
 	m_db = NULL;
 }
 
@@ -116,7 +114,7 @@ Session* SessionMgr::createSession()
 	return pSession;
 }
 
-Session* SessionMgr::createSession(UINT64 sid)
+Session* SessionMgr::createSession(uint64 sid)
 {
 	Session* pSession = m_poolSession.FetchObj();
 	if (NULL == pSession)
@@ -138,7 +136,7 @@ Session* SessionMgr::createSession(UINT64 sid)
 	return pSession;
 }
 
-Session* SessionMgr::findSession(UINT64 sid)
+Session* SessionMgr::findSession(uint64 sid)
 {
 	if (0 == sid)
 	{
@@ -151,7 +149,7 @@ Session* SessionMgr::findSession(UINT64 sid)
 	Session* pSession = NULL;
 
 	// find from memory
-	google::dense_hash_map<unsigned int, Session*>::iterator it = m_mapSession.find(key.nKey[1]);
+	unordered_map<unsigned int, Session*>::iterator it = m_mapSession.find(key.nKey[1]);
 	if (it != m_mapSession.end())
 	{
 		pSession = it->second;
@@ -200,7 +198,7 @@ Session* SessionMgr::findSession(UINT64 sid)
 
 void SessionMgr::releaseSession(Session* pSession)
 {
-	unsigned __int64 sid = pSession->getSId();
+	uint64 sid = pSession->getSId();
 
 	SKeyInfo key;
 	key.qKey = sid;
@@ -214,7 +212,7 @@ void SessionMgr::releaseSession(Session* pSession)
 
 void SessionMgr::update(unsigned int interval)
 {
-	google::dense_hash_map<unsigned int, Session*>::iterator it = m_mapSession.begin();
+	unordered_map<unsigned int, Session*>::iterator it = m_mapSession.begin();
 	while (it != m_mapSession.end())
 	{
 		Session* pSession = it->second;
@@ -243,7 +241,7 @@ void SessionMgr::save(Session* pSession)
 		return;
 	}
 
-	unsigned __int64 sid = pSession->getSId();
+	uint64 sid = pSession->getSId();
 	if (0 == sid)
 	{
 		return;
@@ -259,7 +257,7 @@ void SessionMgr::save(Session* pSession)
 		return;
 	}
 
-	string& str = pSession->getData();
+	const string& str = pSession->getData();
 	if (str.empty())
 	{
 		return;

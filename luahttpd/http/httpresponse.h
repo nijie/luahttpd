@@ -95,7 +95,7 @@ public:
 
 	bool		init(HttpParser& http);
 	void		reset();
-	void		set(int type, string& str);
+	void		set(int type, const string& str);
 	void		appendResponse(const char* pdata);
 
 	void		getText(string& str);

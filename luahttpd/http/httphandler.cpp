@@ -14,7 +14,7 @@
 
 #include <map>
 
-using namespace stdext;
+using namespace std;
 
 #define HTTP_SEND_PACKET_LEN (4 * 1024)
 
@@ -216,7 +216,7 @@ void HttpHandler::appendResponse(const char* pbuf)
 
 void HttpHandler::setResponse(int type, const char* pBuf)
 {
-	m_response.set(type, string(pBuf));
+	m_response.set(type,pBuf);
 }
 
 void HttpHandler::getResponse(string& str)
@@ -251,7 +251,11 @@ Session* HttpHandler::getSession()
 	}
 
 	const char* pSId = getCookie("sid");
-	unsigned __int64 sid = _strtoui64(pSId, NULL, 10);
+#ifdef WIN32
+	uint64 sid = _strtoui64(pSId, NULL, 10);
+#else
+	uint64 sid = strtoull(pSId, NULL, 10);
+#endif
 	SKeyInfo key = DecodeKey(sid);
 
 	m_pSession = SessionMgr::Instance().findSession(key.qKey);
@@ -311,11 +315,19 @@ void HttpHandler::getCookie(string& str)
 	{
 		if (bFirst)
 		{
+#ifdef WIN32
 			_snprintf_s(szCookie, 4095, "%s=%s", it->first.c_str(), it->second.c_str());
+#else
+			snprintf(szCookie, 4095, "%s=%s", it->first.c_str(), it->second.c_str());
+#endif
 		}
 		else
 		{
+#ifdef WIN32
 			_snprintf_s(szCookie, 4095, "\r\nSet-Cookie:%s=%s", it->first.c_str(), it->second.c_str());
+#else
+			snprintf(szCookie, 4095, "\r\nSet-Cookie:%s=%s", it->first.c_str(), it->second.c_str());
+#endif
 		}
 		str += szCookie;
 		bFirst = false;
@@ -439,7 +451,11 @@ void HttpHandler::response()
 			}
 			else
 			{
+#ifdef WIN32
 				Sleep(1);
+#else
+				usleep(1);
+#endif
 			}
 		}
 	}

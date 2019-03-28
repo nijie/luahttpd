@@ -24,7 +24,7 @@ Session::~Session()
 
 }
 
-bool Session::init(unsigned __int64 sid)
+bool Session::init(uint64 sid)
 {
 	m_sid = sid;
 
@@ -41,7 +41,7 @@ void Session::reset()
 	m_bDirty = false;	// 是否有脏数据
 }
 
-unsigned __int64 Session::getSId()
+uint64 Session::getSId()
 {
 	return m_sid;
 }
@@ -137,7 +137,7 @@ const char* Session::get(const char* pKey)
 	if (m_value.isMember(pKey))
 	{
 		static char szbuff[MAX_SESSION_VALUE_LEN] = {0};
-		string& str = m_value[pKey].asString();
+		const string& str = m_value[pKey].asString();
 		int nSize = (int)str.size();
 		memcpy(szbuff, str.c_str(), nSize);
 		szbuff[nSize] = 0;

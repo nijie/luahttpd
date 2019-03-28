@@ -2,7 +2,11 @@
 // Copyright (c) 2014 Nijie. All rights reserved.
 // Use of this source code is governed by a GPL-2 license that can be found in the LICENSE file. 
 //
+#ifdef WIN32
 #include <WinSock2.h>
+#else
+#include <arpa/inet.h>
+#endif
 #include "config.h"
 #include "exelogger.h"
 #include "utility.h"

@@ -4,6 +4,7 @@
 //
 #include "CrashHelper.h"
 // #include "ijl.h"
+#ifdef WIN32
 
 #include<process.h>
 #include<Tlhelp32.h>
@@ -247,3 +248,5 @@ bool CrashHelper::ScreenShot(const char* pszFileName)
 	return true;
 }
 */
+#endif
+

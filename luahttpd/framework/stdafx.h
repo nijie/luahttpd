@@ -11,8 +11,15 @@
 
 #include "targetver.h"
 
+#include "fxtype.h"
 #include <stdio.h>
+#include <stddef.h>
+#ifdef WIN32
 #include <tchar.h>
+#else
+#include <string.h>
+#endif
+
 
 #define LHTTPD_VERSION "0.0.1.0"
 

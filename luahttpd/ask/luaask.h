@@ -5,7 +5,7 @@
 #ifndef __LUA_ASK_H_NIJIE_2014_0624__
 #define __LUA_ASK_H_NIJIE_2014_0624__
 
-#include <string>
+#include "stdafx.h"
 
 enum ELuaAsk
 {

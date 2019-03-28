@@ -5,10 +5,12 @@
 #ifndef __SESSIONMGR_H_NIJIE_2014_0603__
 #define __SESSIONMGR_H_NIJIE_2014_0603__
 
-#include "sparsehash/dense_hash_map"
 #include "session.h"
 #include "dynamicpoolex.h"
 #include "leveldb.h"
+#include <tr1/unordered_map>
+
+using namespace std::tr1;
 
 class SessionMgr
 {
@@ -30,7 +32,7 @@ public:
 	void			save(Session* pSession);
 
 private:
-	google::dense_hash_map<unsigned int, Session*> m_mapSession;
+	unordered_map<unsigned int, Session*> m_mapSession;
 	TDynamicPoolEx<Session>	m_poolSession;
 	leveldb::DB*			m_db;
 	leveldb::ReadOptions	m_readOpt;

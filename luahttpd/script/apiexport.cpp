@@ -4,7 +4,7 @@
 //
 #include "../http/coder.h"
 #include "../http/httphandler.h"
-#include "json.h"
+#include "json/json.h"
 #include "../ask/dbask.h"
 #include "../ask/httpask.h"
 #include "../ask/serverask.h"
@@ -30,7 +30,11 @@ bool table2json(lua_State* tolua_S, Json::Value& val)
 		// 注意：c中实现lua table的遍历时，如果取table的key，并调用了lua_tostring,会使key转换成string，不能使用与接下来的遍历。所以需要把key再push一个。
 		lua_pushvalue(tolua_S, -2);
 		const char*	pSrc = ((const char*)  lua_tostring(tolua_S, -1));
+#ifdef WIN32
 		_snprintf_s(szValue, 4095, "%s", pSrc);
+#else
+		snprintf(szValue, 4095, "%s", pSrc);
+#endif
 		lua_pop(tolua_S, 1);
 
 		if (lua_istable(tolua_S, -1))
@@ -76,7 +80,7 @@ static int tolua_luaexport_JsonEncode00(lua_State* tolua_S)
 			return 0;
 		}
 
-		string& str = root.toStyledString();
+		const string& str = root.toStyledString();
 
 		tolua_pushstring(tolua_S,(const char*)str.c_str());
 	}
@@ -98,9 +102,9 @@ bool json2table(lua_State* tolua_S, Json::Value& val)
 
 	for (Json::Value::iterator it = val.begin(); it != val.end(); ++it)
 	{
-		Json::Value& k = it.key();
+		const Json::Value& k = it.key();
 		Json::Value& v = (*it);
-		string& strK = k.asString();
+		const string& strK = k.asString();
 
 		if (v.type() == Json::objectValue)
 		{
@@ -113,7 +117,7 @@ bool json2table(lua_State* tolua_S, Json::Value& val)
 		}
 		else
 		{
-			string& strV = v.asString();
+			const string& strV = v.asString();
 			tolua_pushstring(tolua_S, strV.c_str());
 		}
 		lua_setfield(tolua_S, -2, strK.c_str());
@@ -157,7 +161,7 @@ static int tolua_luaexport_JsonDecode00(lua_State* tolua_S)
 		}
 		else
 		{
-			string& str = root.asString();
+			const string& str = root.asString();
 			tolua_pushstring(tolua_S, str.c_str());
 			lua_rawseti(tolua_S, -2, 1);
 		}

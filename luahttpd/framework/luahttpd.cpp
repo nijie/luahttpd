@@ -4,14 +4,16 @@
 //
 // lhttpd.cpp : 定义控制台应用程序的入口点。
 //
-
+#ifdef WIN32
 #include <WinSock2.h>
+#include "CrashHelper.h"
+#endif
 #include "stdafx.h"
 #include "exelogger.h"
-#include "CrashHelper.h"
 #include "serverwork.h"
+#include "utility.h"
 
-int _tmain(int argc, _TCHAR* argv[])
+int main()
 {
 #ifdef WIN32
 	CrashHelper::Instance()->Initalize();

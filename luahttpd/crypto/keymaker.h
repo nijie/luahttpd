@@ -4,6 +4,7 @@
 //
 #ifndef __KEYMAKER_H_NIJIE_2014_0603__
 #define __KEYMAKER_H_NIJIE_2014_0603__
+#include "fxtype.h"
 
 static unsigned char s_arEnKey1[256] = {
 	  0, 160, 233, 136,  44, 245,  68, 196, 242,  74, 123, 159, 157, 223, 108, 112, 
@@ -323,11 +324,11 @@ struct SKeyInfo
 	{
 		unsigned char cKey[8];
 		unsigned int nKey[2];
-		unsigned __int64 qKey;
+		uint64  qKey;
 	};
 };
 
-inline SKeyInfo EncodeKey(unsigned __int64 index)
+inline SKeyInfo EncodeKey(uint64 index)
 {
 	SKeyInfo keyInfo;
 	keyInfo.qKey = index;
@@ -344,7 +345,7 @@ inline SKeyInfo EncodeKey(unsigned __int64 index)
 	return keyInfo;
 }
 
-inline SKeyInfo DecodeKey(unsigned __int64 key)
+inline SKeyInfo DecodeKey(uint64 key)
 {
 	SKeyInfo keyInfo;
 	keyInfo.qKey = key;
